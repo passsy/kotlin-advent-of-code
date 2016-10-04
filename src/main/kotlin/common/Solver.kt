@@ -5,6 +5,8 @@ import java.io.File
 import java.util.*
 
 
+private const val MAX_RESULT_PRINT_LINES = 10
+
 /**
  * Helper for small coding challenges. Reading file name from input and open output file buffer for the result output.
  *
@@ -39,7 +41,20 @@ fun solveFromInput(vararg args: String = arrayOf(),
 
     println("output in ${output.absoluteFile}")
     out.close()
-    println("wrote ${output.readLines().size} lines")
+    val written = output.readLines()
+    println("wrote ${written.size} lines")
+
+    // print output partially
+    println("\nResult:")
+    for (i in 0..written.size - 1) {
+        if (i > MAX_RESULT_PRINT_LINES) {
+            println("... <${written.size - MAX_RESULT_PRINT_LINES} more lines>")
+            break
+        }
+        println(written[i])
+    }
+    println("")
+
     val finish = Date()
     val diff = finish.time - start.time
     println("Duration: ${diff / 1000.0}s\nfinished")

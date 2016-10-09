@@ -10,7 +10,7 @@ import org.junit.runner.RunWith
 import java.io.File
 
 @RunWith(JUnitPlatform::class)
-class PerfectlySphericalHouse : Spek({
+class PerfectlySphericalHouseTest : Spek({
 
     describe("number of houses") {
 

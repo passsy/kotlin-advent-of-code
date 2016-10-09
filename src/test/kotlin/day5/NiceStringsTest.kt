@@ -10,7 +10,7 @@ import org.junit.runner.RunWith
 import java.io.File
 
 @RunWith(JUnitPlatform::class)
-class NiceStringsKtTest : Spek({
+class NiceStringsTest : Spek({
 
     describe("doubles") {
         test("detect double chars") {

@@ -1,6 +1,8 @@
 package day4
 
 import common.solveFromInput
+import rx.Observable
+import rx.schedulers.Schedulers
 import java.math.BigInteger
 import java.security.MessageDigest
 
@@ -31,19 +33,27 @@ To do this, he needs to find MD5 hashes which, in hexadecimal, start with at lea
 Now find one that starts with six zeroes.
  */
 fun findAdventCoin(input: String, condition: (string: String) -> Boolean): Int {
-    for (i in 0..100000000) {
-        val probe = "$input$i".md5()
-        if (condition(probe)) {
-            return i
-        }
-    }
-    throw IndexOutOfBoundsException("could not find coin in 100mio tries")
+    val found = Observable.range(0, 1000000000)
+            .window(10000)
+            .concatMapEager({
+                it.subscribeOn(Schedulers.computation())
+                        .map { Coin(it, "$input$it".md5()) }
+                        .filter { condition(it.hash) }
+            }, 1, 8)
+            .doOnNext { println("found: $it") }
+            .take(1).toBlocking().first()
+    return found.number
 }
 
+data class Coin(
+        val number: Int,
+        val hash: String
+)
+
+//val md5MessageDigest = MessageDigest.getInstance("MD5")
 
 private fun String.md5(): String {
-    val digest = MessageDigest.getInstance("MD5")
-            .digest(this.toByteArray(Charsets.UTF_8))
+    val digest = MessageDigest.getInstance("MD5").digest(this.toByteArray(Charsets.UTF_8))
     val hexMd5 = BigInteger(1, digest).toString(16)
     return hexMd5.padStart(32, '0')
 }

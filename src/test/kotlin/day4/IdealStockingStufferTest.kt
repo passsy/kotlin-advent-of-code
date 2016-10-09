@@ -3,11 +3,13 @@ package day4
 import org.assertj.core.api.Assertions.assertThat
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
+import org.junit.Ignore
 import org.junit.platform.runner.JUnitPlatform
 import org.junit.runner.RunWith
 import java.io.File
 
 @RunWith(JUnitPlatform::class)
+@Ignore("like bitcoin mining, heavy calculations, too heavy for unit tests")
 class IdealStockingStufferTest : Spek({
 
     describe("find adventcoins") {

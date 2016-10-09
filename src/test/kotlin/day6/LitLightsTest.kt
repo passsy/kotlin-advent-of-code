@@ -70,18 +70,36 @@ class LitLightsTest : Spek({
 
         test("lit all") {
             val grid = LightGrid(4)
-            grid.setRegion(GridRegion(0, 0, 3, 3)) { true }
+            grid.setRegion(GridRegion(0, 0, 3, 3)) { 1 }
 
             assertThat(grid.litCount()).isEqualTo(16)
         }
 
         test("toggle all") {
             val grid = LightGrid(4)
-            grid.setRegion(GridRegion(0, 0, 3, 3)) { true }
+            grid.setRegion(GridRegion(0, 0, 3, 3)) { 1 }
             assertThat(grid.litCount()).isEqualTo(16)
 
-            grid.setRegion(GridRegion(0, 0, 3, 3)) { false }
+            grid.setRegion(GridRegion(0, 0, 3, 3)) { 0 }
             assertThat(grid.litCount()).isEqualTo(0)
+        }
+    }
+
+    describe("follow santas instructions with dimmable lights"){
+
+        test("turn on 0,0 through 0,0 would increase the total brightness by 1."){
+            assertThat(litLightsWithBrightness(listOf("turn on 0,0 through 0,0"), 1000))
+                    .isEqualTo(1)
+        }
+
+        test("toggle 0,0 through 999,999 would increase the total brightness by 2000000."){
+            assertThat(litLightsWithBrightness(listOf("toggle 0,0 through 999,999"), 1000))
+                    .isEqualTo(2000000)
+        }
+
+        test("big"){
+            val input = File("in/day6-2").readLines()
+            assertThat(litLightsWithBrightness(input, 1000)).isEqualTo(17836115)
         }
     }
 })

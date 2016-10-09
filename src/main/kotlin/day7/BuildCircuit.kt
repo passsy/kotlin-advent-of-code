@@ -3,12 +3,18 @@ package day7
 import common.solveFromInput
 
 fun main(args: Array<String>) {
+    /**
+     * In little Bobby's kit's instructions booklet (provided as your puzzle input), what signal is ultimately provided to wire a?
+     */
     solveFromInput("day7-1") { input, output ->
         val circuit = assembleCircuit(input)
         val result = circuit["a"]
         output.write("$result")
     }
 
+    /**
+     * Now, take the signal you got on wire a, override wire b to that signal, and reset the other wires (including wire a). What new signal is ultimately provided to wire a?
+     */
     solveFromInput("day7-2") { input, output ->
         val circuit = assembleCircuit(input)
         val oldResult = circuit["a"]
@@ -79,7 +85,7 @@ fun assembleCircuit(instructions: List<String>): Circuit {
     return circuit
 }
 
-private fun String.asCircuitInstruction(circuit: Circuit): Instruction {
+fun String.asCircuitInstruction(circuit: Circuit): Instruction {
     //println("parsing: $this")
     try {
         val (all, in1, op, in2, output) =
@@ -96,8 +102,8 @@ private fun String.asCircuitInstruction(circuit: Circuit): Instruction {
         val signal2 = in2.toSignal(circuit)
 
         return Instruction(output, Operation(signal1, signal2, operation))
-    } catch (e: Exception) {
-
+    } catch (e: NullPointerException) {
+        // not enough groups found
     }
 
     try {
@@ -155,6 +161,19 @@ class Not(val input: Input) : Input {
         return "Not($input)"
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Not) return false
+
+        if (input != other.input) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return input.hashCode()
+    }
+
 }
 
 class StaticSignal(val value: Int) : Input {
@@ -163,12 +182,41 @@ class StaticSignal(val value: Int) : Input {
         return "StaticSignal($value)"
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is StaticSignal) return false
+
+        if (value != other.value) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return value
+    }
+
 }
 
 class Signal(val name: String, val circuit: Circuit) : Input {
     override fun get(): Int = circuit.get(name)
     override fun toString(): String {
         return "Signal('$name')"
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Signal) return false
+
+        if (name != other.name) return false
+        if (circuit != other.circuit) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + circuit.hashCode()
+        return result
     }
 
 }
@@ -189,6 +237,24 @@ class Operation(val s1: Input, val s2: Input, val op: OperationType) : Input {
 
     override fun toString(): String {
         return "Operation(s1=$s1, s2=$s2, op=$op)"
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Operation) return false
+
+        if (s1 != other.s1) return false
+        if (s2 != other.s2) return false
+        if (op != other.op) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = s1.hashCode()
+        result = 31 * result + s2.hashCode()
+        result = 31 * result + op.hashCode()
+        return result
     }
 
 }

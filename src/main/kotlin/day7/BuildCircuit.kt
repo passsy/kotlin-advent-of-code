@@ -5,7 +5,24 @@ import common.solveFromInput
 fun main(args: Array<String>) {
     solveFromInput("day7-1") { input, output ->
         val circuit = assembleCircuit(input)
-        val result = circuit.get("a")
+        val result = circuit["a"]
+        output.write("$result")
+    }
+
+    solveFromInput("day7-2") { input, output ->
+        val circuit = assembleCircuit(input)
+        val oldResult = circuit["a"]
+
+        circuit.inputCache.clear()
+
+        // change output of b to output of previous a
+        circuit.instructions.run {
+            val signalB = first { it.output == "b" }
+            remove(signalB)
+            add(Instruction("b", StaticSignal(oldResult)))
+        }
+
+        val result = circuit["a"]
         output.write("$result")
     }
 }
@@ -111,7 +128,7 @@ class Circuit() {
 
     val inputCache: MutableMap<String, Int> = mutableMapOf()
 
-    fun get(signalName: String): Int {
+    operator fun get(signalName: String): Int {
 
         val cache = inputCache[signalName]
         if (cache != null) return cache

@@ -5,6 +5,7 @@ import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
 import org.junit.platform.runner.JUnitPlatform
 import org.junit.runner.RunWith
+import java.io.File
 
 
 @RunWith(JUnitPlatform::class)
@@ -39,5 +40,33 @@ class BuildCircuitTest : Spek({
             assertThat(circuit.get("x")).isEqualTo(123)
             assertThat(circuit.get("y")).isEqualTo(456)
         }
+    }
+
+
+    test("small") {
+        val input = File("in/day7-1").readLines()
+        val circuit = assembleCircuit(input)
+        val result = circuit["a"]
+        assertThat(result).isEqualTo(3176)
+
+    }
+
+
+    test("big") {
+        val input = File("in/day7-2").readLines()
+        val circuit = assembleCircuit(input)
+        val oldResult = circuit["a"]
+
+        circuit.inputCache.clear()
+
+        // change output of b to output of previous a
+        circuit.instructions.run {
+            val signalB = first { it.output == "b" }
+            remove(signalB)
+            add(Instruction("b", StaticSignal(oldResult)))
+        }
+
+        val result = circuit["a"]
+        assertThat(result).isEqualTo(14710)
     }
 })

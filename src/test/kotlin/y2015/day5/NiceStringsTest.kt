@@ -1,6 +1,6 @@
-package day5
+package y2015.day5
 
-import day4.findAdventCoin
+import y2015.day4.findAdventCoin
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.jetbrains.spek.api.Spek

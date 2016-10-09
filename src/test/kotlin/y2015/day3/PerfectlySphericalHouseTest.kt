@@ -1,6 +1,6 @@
-package day2
+package y2015.day2
 
-import day3.numberOfVisitedHouses
+import y2015.day3.numberOfVisitedHouses
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.jetbrains.spek.api.Spek

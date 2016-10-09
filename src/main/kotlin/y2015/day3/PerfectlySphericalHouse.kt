@@ -1,4 +1,4 @@
-package day3
+package y2015.day3
 
 import common.solveFromInput
 

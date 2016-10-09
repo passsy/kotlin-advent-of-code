@@ -1,4 +1,4 @@
-package day6
+package y2015.day6
 
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy

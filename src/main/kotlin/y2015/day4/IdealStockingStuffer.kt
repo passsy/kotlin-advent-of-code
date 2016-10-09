@@ -1,4 +1,4 @@
-package day4
+package y2015.day4
 
 import common.solveFromInput
 import rx.Observable

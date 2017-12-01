@@ -93,7 +93,7 @@ fun captcha2(input: String): Int {
 /**
  * @param validationPosition for each index return the index of the validation item
  */
-private fun captcha(digits: String, validationPosition: (Int) -> Int): Int {
+private fun captcha(digits: String, validationPosition: (index: Int) -> Int): Int {
     val numbers = digits.map { it.toString().toInt() }
     return numbers
             .filterIndexed { i, digit -> digit == numbers[validationPosition(i)] }

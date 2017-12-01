@@ -23,20 +23,20 @@ fun solve(name: String,
 ): List<String> {
     val start = Date()
     println("starting solving $name at $start")
-    val inputLines = input?.lines() ?: inputLines ?: inputFile?.let {
+    val lines = input?.lines() ?: inputLines ?: inputFile?.let {
         val filename = inputFile.name
         println("\nsolving '$inputFile'")
-        var inFile = inputFile
-        if (!inFile.exists()) {
+        val file = inputFile
+        if (!file.exists()) {
             throw Exception("Can't load input file ${File(filename).absoluteFile}")
         }
-        println("reading from ${inFile.absoluteFile}")
-        inFile.readLines()
+        println("reading from ${file.absoluteFile}")
+        file.readLines()
     } ?: throw Exception("no input provided")
 
 
     val writer = StringWriter()
-    block(inputLines, writer)
+    block(lines, writer)
     val result = writer.toString()
     val resultLines = result.lines()
 
@@ -49,7 +49,7 @@ fun solve(name: String,
         println("wrote ${resultLines.size} lines")
     }
 
-    // print output partially
+    // print output partially because the can get very long
     println("\nResult of $name:")
     for (i in 0 until resultLines.size) {
         if (i > MAX_RESULT_PRINT_LINES) {

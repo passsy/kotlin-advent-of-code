@@ -15,27 +15,24 @@ private const val MAX_RESULT_PRINT_LINES = 10
  * @param block implementation solving the puzzle. input is the input file data by lines, output is the buffer to write the output to
  */
 fun solve(name: String,
-        input: String? = null,
-        inputLines: List<String>? = null,
-        inputFile: File? = null,
-        outputFile: File? = null,
-        block: (input: List<String>, output: StringWriter) -> Unit
+          input: String? = null,
+          inputLines: List<String>? = null,
+          inputFile: File? = null,
+          outputFile: File? = null,
+          block: (input: List<String>, outputBuilder: StringBuilder) -> Unit
 ): List<String> {
     val start = Date()
-    println("starting solving $name at $start")
+    println("Start solving '$name' at $start")
     val lines = input?.lines() ?: inputLines ?: inputFile?.let {
-        val filename = inputFile.name
-        println("\nsolving '$inputFile'")
-        val file = inputFile
-        if (!file.exists()) {
-            throw Exception("Can't load input file ${File(filename).absoluteFile}")
+        println("\nreading file '${inputFile.absolutePath}'")
+        if (!inputFile.exists()) {
+            throw Exception("Can't load input file ${inputFile.absoluteFile}")
         }
-        println("reading from ${file.absoluteFile}")
-        file.readLines()
+        println("reading from ${inputFile.absoluteFile}")
+        inputFile.readLines()
     } ?: throw Exception("no input provided")
 
-
-    val writer = StringWriter()
+    val writer = StringBuilder()
     block(lines, writer)
     val result = writer.toString()
     val resultLines = result.lines()
@@ -50,18 +47,20 @@ fun solve(name: String,
     }
 
     // print output partially because the can get very long
-    println("\nResult of $name:")
-    for (i in 0 until resultLines.size) {
-        if (i > MAX_RESULT_PRINT_LINES) {
-            println("... <${resultLines.size - MAX_RESULT_PRINT_LINES} more lines>")
-            break
-        }
-        println(resultLines[i])
-    }
+    println("\nResult of '$name':")
+    resultLines.trimResults(MAX_RESULT_PRINT_LINES).forEach { println(it) }
     println("")
 
     val finish = Date()
     val diff = finish.time - start.time
-    println("$name Duration: ${diff / 1000.0}s\nfinished")
+    println("Solving '$name' took: ${diff / 1000.0}s")
+    println("finished\n\n")
     return resultLines
 }
+
+fun List<String>.trimResults(maxLineCount: Int): List<String> {
+    if (this.size < maxLineCount) return this
+    return take(maxLineCount) + "... <${this.size - maxLineCount} more lines>"
+}
+
+

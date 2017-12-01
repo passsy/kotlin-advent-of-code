@@ -43,14 +43,14 @@ fun main(args: Array<String>) {
     // part 1
     solve("Part One", input = input) { input, output ->
         input.forEach { digits: String ->
-            output.write(captcha1(digits).toString())
+            output.appendln(captcha1(digits).toString())
         }
     }
 
     // part 2
     solve("Part Two", input = input) { input, output ->
         input.forEach { digits: String ->
-            output.write(captcha2(digits).toString())
+            output.appendln(captcha2(digits).toString())
         }
     }
 }

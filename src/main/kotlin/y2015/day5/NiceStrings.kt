@@ -1,6 +1,6 @@
 package y2015.day5
 
-import common.solveFromInput
+import y2015.common.solveFromInput
 
 
 fun main(args: Array<String>) {

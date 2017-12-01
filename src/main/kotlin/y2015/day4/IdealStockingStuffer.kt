@@ -1,6 +1,6 @@
 package y2015.day4
 
-import common.solveFromInput
+import y2015.common.solveFromInput
 import rx.Observable
 import rx.schedulers.Schedulers
 import java.math.BigInteger

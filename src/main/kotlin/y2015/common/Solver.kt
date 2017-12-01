@@ -1,4 +1,4 @@
-package common
+package y2015.common
 
 import java.io.BufferedWriter
 import java.io.File

@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.0.3'
+    ext.kotlin_version = '1.2.0'
 
     repositories {
         mavenCentral()
@@ -17,12 +17,6 @@ repositories {
     mavenCentral()
 }
 
-junitPlatform {
-    engines {
-        include 'spek'
-    }
-}
-
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'io.reactivex:rxkotlin:0.60.0'
@@ -30,8 +24,5 @@ dependencies {
     testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testCompile 'org.assertj:assertj-core:3.5.2'
-    testCompile 'org.jetbrains.spek:spek-api:1.0.89'
-    testRuntime 'org.jetbrains.spek:spek-junit-platform-engine:1.0.89'
-    testCompile "org.junit.platform:junit-platform-runner:1.0.0-M2"
 
 }

@@ -1,7 +1,6 @@
 package y2017
 
 import java.io.File
-import java.io.StringWriter
 import java.util.*
 
 
@@ -14,12 +13,13 @@ private const val MAX_RESULT_PRINT_LINES = 10
  * @param args main args, only reads the first argument as filename. absolute path or relative to `in/`. optional, asks for filename when not defined
  * @param block implementation solving the puzzle. input is the input file data by lines, output is the buffer to write the output to
  */
-fun solve(name: String,
-          input: String? = null,
-          inputLines: List<String>? = null,
-          inputFile: File? = null,
-          outputFile: File? = null,
-          block: (input: List<String>, outputBuilder: StringBuilder) -> Unit
+fun solve(
+        name: String,
+        input: String? = null,
+        inputLines: List<String>? = null,
+        inputFile: File? = null,
+        outputFile: File? = null,
+        block: (input: List<String>, outputBuilder: StringBuilder) -> Unit
 ): List<String> {
     val start = Date()
     println("Start solving '$name' at $start")
@@ -28,12 +28,14 @@ fun solve(name: String,
         if (!inputFile.exists()) {
             throw Exception("Can't load input file ${inputFile.absoluteFile}")
         }
-        println("reading from ${inputFile.absoluteFile}")
         inputFile.readLines()
     } ?: throw Exception("no input provided")
 
+    println("calculating...")
+
     val writer = StringBuilder()
     block(lines, writer)
+
     val result = writer.toString()
     val resultLines = result.lines()
 
@@ -49,12 +51,12 @@ fun solve(name: String,
     // print output partially because the can get very long
     println("\nResult of '$name':")
     resultLines.trimResults(MAX_RESULT_PRINT_LINES).forEach { println(it) }
-    println("")
 
     val finish = Date()
     val diff = finish.time - start.time
     println("Solving '$name' took: ${diff / 1000.0}s")
-    println("finished\n\n")
+    println("finished")
+    println("___________________________\n\n")
     return resultLines
 }
 

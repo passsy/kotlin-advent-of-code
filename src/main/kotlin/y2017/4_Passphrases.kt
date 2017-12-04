@@ -40,13 +40,17 @@ fun main(args: Array<String>) {
     }
 }
 
-// too easy, no tests
 fun validatePassphrase(input: String): Boolean {
     val words = input.split(" ")
     return words.distinct().size == words.size
 }
 
 fun validatePassphrase2(input: String): Boolean {
-    val words = input.split(" ").map { it.toSet() }
+    val words = input.split(" ")
+            .map { word ->
+                word.groupBy { it }
+                        .map { "${it.key}${it.value.count()}" }
+                        .toSet()
+            }
     return words.distinct().size == words.size
 }

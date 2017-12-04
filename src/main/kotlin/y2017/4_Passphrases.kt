@@ -46,11 +46,6 @@ fun validatePassphrase(input: String): Boolean {
 }
 
 fun validatePassphrase2(input: String): Boolean {
-    val words = input.split(" ")
-            .map { word ->
-                word.groupBy { it }
-                        .map { "${it.key}${it.value.count()}" }
-                        .toSet()
-            }
+    val words = input.split(" ").map { it.toList().sorted() }
     return words.distinct().size == words.size
 }

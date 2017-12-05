@@ -65,21 +65,21 @@ class ChallengeSolver(var name: String = "Challenge") {
     }
 
     fun solveMultiLine(block: Result.(List<String>) -> Unit) {
-        solver = Solver({ requireNotNull(input)().lines() }, {  context, input -> block(context, input) })
+        solver = Solver({ requireNotNull(input)().lines() }, block)
 
     }
 
     fun solve(block: Result.(String) -> Unit) {
-        solver = Solver({ requireNotNull(input)() }, { context, input -> block(context, input) })
+        solver = Solver({ requireNotNull(input)() }, block)
     }
 
     private  fun <T> _solve(solver: Solver<T>) {
-        val title = "\nSolving '$name'..."
+        val title = "\nChallenge '$name'"
         val line = "".padStart(title.count(), '=')
         println("$title\n$line")
 
         val context = Result()
-        val input = solver.inputLoader()
+        val input = solver.inputProvider()
 
         println("\nsolving...")
         val duration = measureTimeMillis {
@@ -111,9 +111,11 @@ class ChallengeSolver(var name: String = "Challenge") {
 }
 
 class Solver<T>(
-        val inputLoader: () -> T,
-        val solve: (Result, T) -> Unit
-)
+        val inputProvider: () -> T,
+        val block: Result.(T) -> Unit
+) {
+    fun solve(context: Result, input: T) = block(context, input)
+}
 
 
 /**
@@ -138,7 +140,6 @@ private fun String.trimChallengeInput(): String {
             .joinToString("\n")
             .trimIndent()
 }
-
 
 private const val MAX_RESULT_PRINT_LINES = 10
 

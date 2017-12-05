@@ -2,6 +2,11 @@ package y2017
 
 import common.challenge
 
+fun main(args: Array<String>) {
+    d05_1_2017()
+    d05_2_2017()
+}
+
 //--- Day 5: A Maze of Twisty Trampolines, All Alike ---
 //
 //An urgent interrupt arrives from the CPU: it's trapped in a maze of jump instructions, and it would like assistance from any programs with spare cycles to help find the exit.
@@ -28,14 +33,12 @@ import common.challenge
 //In this example, the exit is reached in 5 steps.
 //
 //How many steps does it take to reach the exit?
-val y2017_d5_1 = challenge("Day 5 - Part One") {
+val d05_1_2017 = challenge("Day 5 - Part One") {
     inputFile("2017/5.in")
     solveMultiLine {
         result = stepCount(it.map { it.toInt() }) //364539
     }
 }
-
-
 
 
 //--- Part Two ---
@@ -45,16 +48,11 @@ val y2017_d5_1 = challenge("Day 5 - Part One") {
 //Using this rule with the above example, the process now takes 10 steps, and the offset values after finding the exit are left as 2 3 2 3 -1.
 //
 //How many steps does it now take to reach the exit?
-val y2017_d5_2 = challenge("Day 5 - Part Two") {
+val d05_2_2017 = challenge("Day 5 - Part Two") {
     inputFile("2017/5.in")
     solveMultiLine {
         result = stepCount2(it.map { it.toInt() }) //27477714
     }
-}
-
-fun main(args: Array<String>) {
-    y2017_d5_1()
-    y2017_d5_2()
 }
 
 fun stepCount(instructions: List<Int>, valueChange: (Int) -> Int = { it + 1 }): Int {

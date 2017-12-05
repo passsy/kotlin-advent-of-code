@@ -36,7 +36,7 @@ object Day2_CorruptionChecksum {
     fun parseInputTable(input: List<String>): List<List<Int>> =
             input.map { it.split('\t').map(String::toInt) }
 
-    fun checksum(lines: List<List<Int>>): Int = lines.map(::minMaxDiff).sum()
+    fun checksum(lines: List<List<Int>>): Int = lines.map { minMaxDiff(it) }.sum()
 
     fun minMaxDiff(list: List<Int>): Int = list.max()!! - list.min()!!
 
@@ -69,7 +69,7 @@ object Day2_CorruptionChecksum {
 
 
     fun evenlyDivisibleChecksum(lines: List<List<Int>>): Int {
-        return lines.map(::evenDivisionPair)
+        return lines.map { evenDivisionPair(it) }
                 .map { it.first / it.second }
                 .sum()
     }

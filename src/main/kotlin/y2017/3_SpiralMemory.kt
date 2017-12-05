@@ -1,5 +1,7 @@
 package y2017
 
+import common.challenge
+
 
 fun main(args: Array<String>) {
     //--- Day 3: Spiral Memory ---
@@ -22,10 +24,11 @@ fun main(args: Array<String>) {
     //Data from square 23 is carried only 2 steps: up twice.
     //Data from square 1024 must be carried 31 steps.
     //How many steps are required to carry the data from the square identified in your puzzle input all the way to the access port?
-    solve("Part One", input = "277678") { lines, output ->
-        lines.map { it.toInt() }
-                .map(::distance)
-                .forEach { output.appendln(it) }
+    challenge("Day 3 - Part One"){
+        inputText("277678")
+        solve {
+            result = distance(it.toInt()) //475
+        }
     }
 
     //--- Part Two ---
@@ -47,10 +50,11 @@ fun main(args: Array<String>) {
     //351   11   23   25   26
     //362  747  806--->   ...
     //What is the first value written that is larger than your puzzle input?
-    solve("Part Two", input = "277678") { lines, output ->
-        lines.map { it.toInt() }
-                .map(::firstLargerNumber)
-                .forEach { output.appendln(it) }
+    challenge("Day 3 - Part Two"){
+        inputText("277678")
+        solve {
+            result = firstLargerNumber(it.toInt()) //279138
+        }
     }
 }
 

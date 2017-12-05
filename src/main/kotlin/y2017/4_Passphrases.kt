@@ -1,11 +1,9 @@
 package y2017
 
-import java.io.File
+import common.challenge
 
 
 fun main(args: Array<String>) {
-
-    val inFile = File(Int::class.java.getResource("4.in").toURI())
 
     //--- Day 4: High-Entropy Passphrases ---
     //
@@ -19,8 +17,12 @@ fun main(args: Array<String>) {
     //aa bb cc dd aa is not valid - the word aa appears more than once.
     //aa bb cc dd aaa is valid - aa and aaa count as different words.
     //The system's full passphrase list is available as your puzzle input. How many passphrases are valid?
-    solve("Part One", inputFile = inFile) { lines, out ->
-        out.appendln(lines.filter(::validatePassphrase).count())
+    challenge("Day 4 - Part One") {
+        inputFile("2017/4.in")
+
+        solveMultiLine {
+            result = it.filter(::validatePassphrase).count() //337
+        }
     }
 
     //--- Part Two ---
@@ -35,8 +37,13 @@ fun main(args: Array<String>) {
     //iiii oiii ooii oooi oooo is valid.
     //oiii ioii iioi iiio is not valid - any of these words can be rearranged to form any other word.
     //Under this new system policy, how many passphrases are valid?
-    solve("Part Two", inputFile = inFile) { lines, out ->
-        out.appendln(lines.filter(::validatePassphrase2).count())
+
+    challenge("Day 4 - Part Two") {
+        inputFile("2017/4.in")
+
+        solveMultiLine {
+            result = it.filter(::validatePassphrase2).count() //231
+        }
     }
 }
 

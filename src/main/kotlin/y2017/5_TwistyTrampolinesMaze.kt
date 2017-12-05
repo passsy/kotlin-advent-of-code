@@ -1,11 +1,9 @@
 package y2017
 
-import java.io.File
+import common.challenge
 
 
 fun main(args: Array<String>) {
-    val inFile = File(Int::class.java.getResource("5.in").toURI())
-
     //--- Day 5: A Maze of Twisty Trampolines, All Alike ---
     //
     //An urgent interrupt arrives from the CPU: it's trapped in a maze of jump instructions, and it would like assistance from any programs with spare cycles to help find the exit.
@@ -32,8 +30,11 @@ fun main(args: Array<String>) {
     //In this example, the exit is reached in 5 steps.
     //
     //How many steps does it take to reach the exit?
-    solve("Part One", inputFile = inFile) { lines, out ->
-        out.appendln(stepCount(lines.map { it.toInt() })) //364539
+    challenge("Day 5 - Part One") {
+        inputFile("2017/5.in")
+        solveMultiLine {
+            result = stepCount(it.map { it.toInt() }) //364539
+        }
     }
 
     //--- Part Two ---
@@ -43,8 +44,11 @@ fun main(args: Array<String>) {
     //Using this rule with the above example, the process now takes 10 steps, and the offset values after finding the exit are left as 2 3 2 3 -1.
     //
     //How many steps does it now take to reach the exit?
-    solve("Part Two", inputFile = inFile) { lines, out ->
-        out.appendln(stepCount2(lines.map { it.toInt() })) //27477714
+    challenge("Day 5 - Part Two") {
+        inputFile("2017/5.in")
+        solveMultiLine {
+            result = stepCount2(it.map { it.toInt() }) //27477714
+        }
     }
 }
 

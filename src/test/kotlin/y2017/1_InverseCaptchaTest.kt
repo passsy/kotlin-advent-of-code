@@ -3,8 +3,10 @@ package y2017
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.catchThrowable
 import org.junit.Test
+import y2017.Day1_InverseCaptcha.captcha1
+import y2017.Day1_InverseCaptcha.captcha2
 
-class InverseCaptchaTest {
+class Day1InverseCaptchaTest {
 
     /**
      * `1122` produces a sum of 3 (1 + 2) because the first digit (1) matches the second digit and the third digit (2) matches the fourth digit.

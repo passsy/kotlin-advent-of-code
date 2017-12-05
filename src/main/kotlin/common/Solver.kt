@@ -66,14 +66,13 @@ class ChallengeSolver(var name: String = "Challenge") {
 
     fun solveMultiLine(block: Result.(List<String>) -> Unit) {
         solver = Solver({ requireNotNull(input)().lines() }, block)
-
     }
 
     fun solve(block: Result.(String) -> Unit) {
         solver = Solver({ requireNotNull(input)() }, block)
     }
 
-    private  fun <T> _solve(solver: Solver<T>) {
+    private fun <T> _solve(solver: Solver<T>) {
         val title = "\nChallenge '$name'"
         val line = "".padStart(title.count(), '=')
         println("$title\n$line")

@@ -34,7 +34,7 @@ val d03_1_2017 = challenge("Day 3 - Part One") {
     }
 }
 
-private fun distance(destination: Int): Int {
+fun distance(destination: Int): Int {
     if (destination == 1) return 0
 
     var ring = 0
@@ -82,7 +82,7 @@ val d03_2_2017 = challenge("Day 3 - Part Two") {
     }
 }
 
-private fun firstLargerNumber(limit: Int): Int {
+fun firstLargerNumber(limit: Int): Int {
     val array = hashMapOf<Pair<Int, Int>, Int>()
     array.put(0 to 0, 1)
     var x = 0

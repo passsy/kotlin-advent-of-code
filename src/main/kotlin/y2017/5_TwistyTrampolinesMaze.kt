@@ -40,21 +40,6 @@ val d05_1_2017 = challenge("Day 5 - Part One") {
     }
 }
 
-
-//--- Part Two ---
-//
-//Now, the jumps are even stranger: after each jump, if the offset was three or more, instead decrease it by 1. Otherwise, increase it by 1 as before.
-//
-//Using this rule with the above example, the process now takes 10 steps, and the offset values after finding the exit are left as 2 3 2 3 -1.
-//
-//How many steps does it now take to reach the exit?
-val d05_2_2017 = challenge("Day 5 - Part Two") {
-    inputFile("2017/5.in")
-    solveMultiLine {
-        result = stepCount2(it.map { it.toInt() }) //27477714
-    }
-}
-
 fun stepCount(instructions: List<Int>, valueChange: (Int) -> Int = { it + 1 }): Int {
 
     val jumpInstructions = ArrayList(instructions)
@@ -72,6 +57,21 @@ fun stepCount(instructions: List<Int>, valueChange: (Int) -> Int = { it + 1 }): 
         // escaped maze
     }
     return jumps
+}
+
+
+//--- Part Two ---
+//
+//Now, the jumps are even stranger: after each jump, if the offset was three or more, instead decrease it by 1. Otherwise, increase it by 1 as before.
+//
+//Using this rule with the above example, the process now takes 10 steps, and the offset values after finding the exit are left as 2 3 2 3 -1.
+//
+//How many steps does it now take to reach the exit?
+val d05_2_2017 = challenge("Day 5 - Part Two") {
+    inputFile("2017/5.in")
+    solveMultiLine {
+        result = stepCount2(it.map { it.toInt() }) //27477714
+    }
 }
 
 fun stepCount2(instructions: List<Int>) =

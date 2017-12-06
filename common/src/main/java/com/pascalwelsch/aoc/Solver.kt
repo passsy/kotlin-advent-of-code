@@ -20,7 +20,7 @@ class ChallengeSolver(var name: String = "Challenge") {
     }
 
     /**
-     * like invoke but disables writing the output in a file
+     * like [invoke] but disables writing the output in a file
      */
     fun test(): String {
         outFile = null
@@ -45,25 +45,7 @@ class ChallengeSolver(var name: String = "Challenge") {
     }
 
     fun ChallengeSolver.inputFile(path: String, trim: Boolean = true) {
-        input = {
-            val resource = Int::class.java.getResource(path)
-            if (resource == null) throw FileNotFoundException("could not load '$path'")
-            val file = File(resource.toURI())
-            println("reading input file '${file.absolutePath}'")
-            if (!file.exists()) {
-                throw FileNotFoundException(
-                        "couldn't find input file '$path' at ${file.absolutePath}")
-            }
-            val text = file.readText()
-            if (text.isEmpty()) throw IllegalArgumentException("Input file is empty")
-            println("input file '$path' has ${text.lines().size} lines")
-            val trimmed = if (trim) {
-                text.trimChallengeInput()
-            } else {
-                text
-            }
-            trimmed
-        }
+        input = { resourceFileText(path, trim)}
     }
 
     fun ChallengeSolver.outputFile(path: String) {
@@ -158,4 +140,22 @@ fun List<String>.trimResults(maxLineCount: Int): List<String> {
     return take(maxLineCount) + "... <${this.size - maxLineCount} more lines>" + "$size lines"
 }
 
-
+fun resourceFileText(path: String, trim: Boolean = true): String {
+    val resource = Int::class.java.getResource(path)
+    if (resource == null) throw FileNotFoundException("could not load '$path'")
+    val file = File(resource.toURI())
+    println("reading input file '${file.absolutePath}'")
+    if (!file.exists()) {
+        throw FileNotFoundException(
+                "couldn't find input file '$path' at ${file.absolutePath}")
+    }
+    val text = file.readText()
+    if (text.isEmpty()) throw IllegalArgumentException("Input file is empty")
+    println("input file '$path' has ${text.lines().size} lines")
+    val trimmed = if (trim) {
+        text.trimChallengeInput()
+    } else {
+        text
+    }
+    return trimmed
+}

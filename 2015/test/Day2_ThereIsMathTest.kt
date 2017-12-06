@@ -1,3 +1,4 @@
+import com.pascalwelsch.aoc.resourceFileText
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
@@ -15,7 +16,7 @@ class Day2_ThereIsMathTest {
 
     @Test
     fun `combined paper required`() {
-        val input = file("day2-1").readLines()
+        val input = resourceFileText("day2-1").lines()
         val result = input.map { requiredPaper(it) }.sum()
         assertThat(result).isEqualTo(1598415)
     }
@@ -32,7 +33,7 @@ class Day2_ThereIsMathTest {
 
     @Test
     fun `combined ribbon required`() {
-        val input = file("day2-2").readLines()
+        val input = resourceFileText("day2-2").lines()
         val result = input.map { requiredRibbon(it) }.sum()
         assertThat(result).isEqualTo(3812909)
     }

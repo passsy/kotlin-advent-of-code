@@ -1,3 +1,4 @@
+import com.pascalwelsch.aoc.resourceFileText
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Ignore
 import org.junit.Test
@@ -22,15 +23,15 @@ class Day4_IdealStockingStufferTest {
 
     @Test
     fun `solve part 1`() {
-        val input = file("day4-1").readLines()
-        val result = findAdventCoin(input[0]) { it.startsWith("00000") }
+        val input = resourceFileText("day4-1")
+        val result = findAdventCoin(input) { it.startsWith("00000") }
         assertThat(result).isEqualTo(346386)
     }
 
     @Test
     fun `solve part 2`() {
-        val input = file("day4-2").readLines()
-        val result = findAdventCoin(input[0]) { it.startsWith("000000") }
+        val input = resourceFileText("day4-2")
+        val result = findAdventCoin(input) { it.startsWith("000000") }
         assertThat(result).isEqualTo(9958218)
     }
 }

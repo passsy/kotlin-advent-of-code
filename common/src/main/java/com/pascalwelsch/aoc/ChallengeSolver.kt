@@ -1,7 +1,6 @@
 package com.pascalwelsch.aoc
 
 import java.io.File
-import java.io.FileNotFoundException
 import kotlin.system.measureTimeMillis
 
 fun challenge(name: String, init: ChallengeSolver.() -> Unit) = ChallengeSolver(name).apply(init)
@@ -122,40 +121,9 @@ class Result {
 
 }
 
-/**
- * trim the text matching typical challenge inputs, remove empty lines at start and bottom and removes indention.
- */
-private fun String.trimChallengeInput(): String {
-    return lines()
-            .dropWhile { it.isBlank() }
-            .dropLastWhile { it.isBlank() }
-            .joinToString("\n")
-            .trimIndent()
-}
-
 private const val MAX_RESULT_PRINT_LINES = 10
 
 fun List<String>.trimResults(maxLineCount: Int): List<String> {
     if (this.size < maxLineCount) return this
     return take(maxLineCount) + "... <${this.size - maxLineCount} more lines>" + "$size lines"
-}
-
-fun resourceFileText(path: String, trim: Boolean = true): String {
-    val resource = Int::class.java.getResource(path)
-    if (resource == null) throw FileNotFoundException("could not load '$path'")
-    val file = File(resource.toURI())
-    println("reading input file '${file.absolutePath}'")
-    if (!file.exists()) {
-        throw FileNotFoundException(
-                "couldn't find input file '$path' at ${file.absolutePath}")
-    }
-    val text = file.readText()
-    if (text.isEmpty()) throw IllegalArgumentException("Input file is empty")
-    println("input file '$path' has ${text.lines().size} lines")
-    val trimmed = if (trim) {
-        text.trimChallengeInput()
-    } else {
-        text
-    }
-    return trimmed
 }

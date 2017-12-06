@@ -1,3 +1,4 @@
+import com.pascalwelsch.aoc.resourceFileText
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.Test
@@ -31,8 +32,8 @@ class Day3_PerfectlySphericalHouseTest {
 
     @Test
     fun `number of houses - big`() {
-        val input = file("day3-1").readLines()
-        val result = numberOfVisitedHouses(input[0])
+        val input = resourceFileText("day3-1")
+        val result = numberOfVisitedHouses(input)
         assertThat(result).isEqualTo(2572)
     }
 
@@ -63,8 +64,8 @@ class Day3_PerfectlySphericalHouseTest {
 
     @Test
     fun `robo santa - big`() {
-        val input = file("day3-2").readLines()
-        val result = numberOfVisitedHouses(input[0], 2)
+        val input = resourceFileText("day3-2")
+        val result = numberOfVisitedHouses(input, 2)
         assertThat(result).isEqualTo(2631)
     }
 

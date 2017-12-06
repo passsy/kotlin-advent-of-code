@@ -1,3 +1,4 @@
+import com.pascalwelsch.aoc.resourceFileText
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.Test
@@ -36,8 +37,7 @@ class Day1_NotQuiteLispTest {
 
     @Test
     fun `solve part1`() {
-        val file = file("day1-1")
-        val input = file.readLines()[0]
+        val input = resourceFileText("day1-1")
         assertThat(whatFloor(input)).isEqualTo(138)
     }
 
@@ -59,8 +59,7 @@ class Day1_NotQuiteLispTest {
 
     @Test
     fun `solve part2`() {
-        val file = file("day1-2")
-        val input = file.readLines()[0]
+        val input = resourceFileText("day1-2")
         assertThat(whenEnterBasement(input)).isEqualTo(1771)
     }
 

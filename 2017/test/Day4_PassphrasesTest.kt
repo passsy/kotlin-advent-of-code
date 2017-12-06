@@ -1,7 +1,7 @@
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.Test
 import Day4_Passphrases.validatePassphrase
 import Day4_Passphrases.validatePassphrase2
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.Test
 
 class Day4_PassphrasesTest {
 

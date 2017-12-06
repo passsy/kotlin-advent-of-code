@@ -13,7 +13,7 @@ private const val MAX_RESULT_PRINT_LINES = 10
  * @param block implementation solving the puzzle. input is the input file data by lines, output is the buffer to write the output to
  */
 internal fun solveFromInput(vararg args: String = arrayOf(),
-                   block: (input: List<String>, output: BufferedWriter) -> Unit) {
+                            block: (input: List<String>, output: BufferedWriter) -> Unit) {
     val start = Date()
     val filename: String = args.getOrElse(0, {
         println("enter the name of the input file in folder `in/` or the absolute path:")

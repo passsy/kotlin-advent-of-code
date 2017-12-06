@@ -1,11 +1,11 @@
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.catchThrowable
-import org.junit.Test
 import Day2_CorruptionChecksum.checksum
 import Day2_CorruptionChecksum.evenDivisionPair
 import Day2_CorruptionChecksum.evenlyDivisibleChecksum
 import Day2_CorruptionChecksum.minMaxDiff
 import Day2_CorruptionChecksum.parseInputTable
+import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.catchThrowable
+import org.junit.Test
 
 class Day2_CorruptionChecksumTest {
 

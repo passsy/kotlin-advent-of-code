@@ -116,7 +116,6 @@ fun String.asCircuitInstruction(circuit: Circuit): CircuitInstruction {
 }
 
 
-
 data class CircuitInstruction(
         val output: String,
         val input: Input

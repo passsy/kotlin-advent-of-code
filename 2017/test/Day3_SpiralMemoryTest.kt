@@ -1,7 +1,7 @@
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.Test
 import Day3_SpiralMemory.distance
 import Day3_SpiralMemory.firstLargerNumber
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.Test
 
 
 class Day3_SpiralMemoryTest {
@@ -51,11 +51,13 @@ class Day3_SpiralMemoryTest {
     fun `largest number - circle 1 move right and up`() {
         assertThat(firstLargerNumber(1)).isEqualTo(2)
     }
+
     @Test
     fun `largest number - circle 1 move left`() {
         assertThat(firstLargerNumber(3)).isEqualTo(4)
         assertThat(firstLargerNumber(4)).isEqualTo(5)
     }
+
     @Test
     fun `largest number - circle 1 move down`() {
         assertThat(firstLargerNumber(6)).isEqualTo(10)

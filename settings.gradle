@@ -1,2 +1,3 @@
 rootProject.name = 'kotlin-advent-of-code'
+include '2017'
 

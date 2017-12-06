@@ -1,7 +1,3 @@
-package y2015.day2
-
-import file
-import numberOfVisitedHouses
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.Test

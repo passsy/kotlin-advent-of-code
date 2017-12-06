@@ -19,6 +19,14 @@ class ChallengeSolver(var name: String = "Challenge") {
         return _solve(requireNotNull(solver))
     }
 
+    /**
+     * like invoke but disables writing the output in a file
+     */
+    fun test(): String {
+        outFile = null
+        return _solve(requireNotNull(solver))
+    }
+
     private var input: (() -> String)? = null
     private var outFile: (() -> File)? = null
     private var solver: Solver<*>? = null

@@ -49,12 +49,12 @@ class Day6_MemoryReallocationTest {
     @Test
     @Ignore("slow test")
     fun `solve Part1`() {
-        assertThat(part1()).isEqualTo("12841")
+        assertThat(part1.test()).isEqualTo("12841")
     }
 
     @Test
     @Ignore("slow test")
     fun `solve Part2`() {
-        assertThat(part2()).isEqualTo("8038")
+        assertThat(part2.test()).isEqualTo("8038")
     }
 }

@@ -90,11 +90,11 @@ class Day1_InverseCaptchaTest {
 
     @Test
     fun `solve Part1`() {
-        assertThat(part1()).isEqualTo("1029")
+        assertThat(part1.test()).isEqualTo("1029")
     }
 
     @Test
     fun `solve Part2`() {
-        assertThat(part2()).isEqualTo("1220")
+        assertThat(part2.test()).isEqualTo("1220")
     }
 }

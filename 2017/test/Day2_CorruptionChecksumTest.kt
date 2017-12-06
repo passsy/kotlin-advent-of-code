@@ -67,11 +67,11 @@ class Day2_CorruptionChecksumTest {
 
     @Test
     fun `solve Part1`() {
-        assertThat(part1()).isEqualTo("42378")
+        assertThat(part1.test()).isEqualTo("42378")
     }
 
     @Test
     fun `solve Part2`() {
-        assertThat(part2()).isEqualTo("246")
+        assertThat(part2.test()).isEqualTo("246")
     }
 }

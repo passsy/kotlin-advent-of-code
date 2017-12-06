@@ -75,11 +75,11 @@ class Day3_SpiralMemoryTest {
 
     @Test
     fun `solve Part1`() {
-        assertThat(part1()).isEqualTo("475")
+        assertThat(part1.test()).isEqualTo("475")
     }
 
     @Test
     fun `solve Part2`() {
-        assertThat(part2()).isEqualTo("279138")
+        assertThat(part2.test()).isEqualTo("279138")
     }
 }

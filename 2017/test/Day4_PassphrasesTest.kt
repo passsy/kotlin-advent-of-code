@@ -34,11 +34,11 @@ class Day4_PassphrasesTest {
 
     @Test
     fun `solve Part1`() {
-        assertThat(part1()).isEqualTo("337")
+        assertThat(part1.test()).isEqualTo("337")
     }
 
     @Test
     fun `solve Part2`() {
-        assertThat(part2()).isEqualTo("231")
+        assertThat(part2.test()).isEqualTo("231")
     }
 }

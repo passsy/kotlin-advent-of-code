@@ -32,22 +32,26 @@ object Day6_MemoryReallocation {
         inputText("4\t10\t4\t1\t8\t4\t9\t14\t5\t1\t14\t15\t0\t15\t3\t5")
         solve {
             val banks = it.split('\t').map { it.toInt() }
-            result = stepsUntilRecursion(banks)
+            result = stepsUntilRecursion(banks) //12841
         }
     }
 
     fun stepsUntilRecursion(input: List<Int>): Int {
+        val stack = recursiveStack(input)
+        return stack.size - 1
+    }
+
+    private fun recursiveStack(input: List<Int>): Stack<List<Int>> {
         val stack = Stack<List<Int>>()
 
         var banks = input
         while (true) {
             // check stack for same element
             val recursionPos = stack.indexOf(banks)
-            if (recursionPos > -1) {
-                return stack.size
-            }
             stack.push(banks)
-
+            if (recursionPos > -1) {
+                return stack
+            }
             banks = redistribute(banks)
         }
     }
@@ -80,23 +84,15 @@ object Day6_MemoryReallocation {
         inputText("4\t10\t4\t1\t8\t4\t9\t14\t5\t1\t14\t15\t0\t15\t3\t5")
         solve {
             val banks = it.split('\t').map { it.toInt() }
-            result = recursionLoopSize(banks)
+            result = recursionLoopSize(banks) //8038
         }
     }
 
     fun recursionLoopSize(input: List<Int>): Int {
-        val stack = Stack<List<Int>>()
+        val stack = recursiveStack(input)
+        val topElement = stack.pop()
+        val recursionStart = stack.indexOfFirst { it == topElement }
 
-        var banks = input
-        while (true) {
-            // check stack for same element
-            val recursionPos = stack.indexOf(banks)
-            if (recursionPos > -1) {
-                return stack.size - recursionPos
-            }
-            stack.push(banks)
-
-            banks = redistribute(banks)
-        }
+        return stack.size - recursionStart
     }
 }

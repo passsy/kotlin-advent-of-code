@@ -3,8 +3,7 @@ import org.junit.Test
 import Day4_Passphrases.validatePassphrase
 import Day4_Passphrases.validatePassphrase2
 
-
-class PassPhrasesTest {
+class Day4_PassphrasesTest {
 
     @Test
     fun `passphrase is valid for distinct words`() {

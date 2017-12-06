@@ -4,7 +4,7 @@ import org.junit.Test
 import Day1_InverseCaptcha.captcha1
 import Day1_InverseCaptcha.captcha2
 
-class Day1InverseCaptchaTest {
+class Day1_InverseCaptchaTest {
 
     /**
      * `1122` produces a sum of 3 (1 + 2) because the first digit (1) matches the second digit and the third digit (2) matches the fourth digit.

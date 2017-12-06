@@ -4,7 +4,7 @@ import Day3_SpiralMemory.distance
 import Day3_SpiralMemory.firstLargerNumber
 
 
-class SpiralMemoryTest {
+class Day3_SpiralMemoryTest {
 
     /**
      * Data from square 1 is carried 0 steps, since it's at the access port.

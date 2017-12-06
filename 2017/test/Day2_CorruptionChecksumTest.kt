@@ -7,7 +7,7 @@ import Day2_CorruptionChecksum.evenlyDivisibleChecksum
 import Day2_CorruptionChecksum.minMaxDiff
 import Day2_CorruptionChecksum.parseInputTable
 
-class CorruptionChecksumTest {
+class Day2_CorruptionChecksumTest {
 
     @Test
     fun parseTable() {

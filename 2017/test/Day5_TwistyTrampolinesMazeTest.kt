@@ -1,10 +1,10 @@
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.Test
 import Day5_TwistyTrampolinesMaze.stepCount
 import Day5_TwistyTrampolinesMaze.stepCount2
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.Test
 
 
-class TwistyTrampolinesMaze {
+class Day5_TwistyTrampolinesMazeTest {
 
     @Test
     fun `small jump sample, exit at end`() {

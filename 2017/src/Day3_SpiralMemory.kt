@@ -1,3 +1,5 @@
+import com.pascalwelsch.aoc.challenge
+
 fun main(args: Array<String>) {
     Day3_SpiralMemory.part1()
     Day3_SpiralMemory.part2()

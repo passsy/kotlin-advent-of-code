@@ -2,8 +2,7 @@ import Day1_InverseCaptcha.captcha1
 import Day1_InverseCaptcha.captcha2
 import Day1_InverseCaptcha.part1
 import Day1_InverseCaptcha.part2
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.catchThrowable
+import org.assertj.core.api.Assertions.*
 import org.junit.Test
 
 class Day1_InverseCaptchaTest {

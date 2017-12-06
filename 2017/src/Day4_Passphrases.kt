@@ -1,3 +1,5 @@
+import com.pascalwelsch.aoc.challenge
+
 fun main(args: Array<String>) {
     Day4_Passphrases.part1()
     Day4_Passphrases.part2()
@@ -18,7 +20,7 @@ object Day4_Passphrases {
     //aa bb cc dd aaa is valid - aa and aaa count as different words.
     //The system's full passphrase list is available as your puzzle input. How many passphrases are valid?
     val part1 = challenge("Day 4 - Part One") {
-        inputFile("4.in")
+        inputFile("4.txt")
 
         solveMultiLine {
             result = it.filter { validatePassphrase(it) }.count() //337
@@ -43,7 +45,7 @@ object Day4_Passphrases {
     //oiii ioii iioi iiio is not valid - any of these words can be rearranged to form any other word.
     //Under this new system policy, how many passphrases are valid?
     val part2 = challenge("Day 4 - Part Two") {
-        inputFile("4.in")
+        inputFile("4.txt")
 
         solveMultiLine {
             result = it.filter { validatePassphrase2(it) }.count() //231

@@ -1,3 +1,5 @@
+package com.pascalwelsch.aoc
+
 import java.io.File
 import java.io.FileNotFoundException
 import kotlin.system.measureTimeMillis
@@ -86,7 +88,7 @@ class ChallengeSolver(var name: String = "Challenge") {
         }
 
         // print output partially because the can get very long
-        println("\nResult of '$name':")
+        println("\ncom.pascalwelsch.aoc.Result of '$name':")
         val result = context.result.toString()
         if (result.isEmpty()) {
             throw IllegalStateException("No output! result is empty")

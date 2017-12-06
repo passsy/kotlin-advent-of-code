@@ -1,3 +1,5 @@
+import com.pascalwelsch.aoc.challenge
+
 fun main(args: Array<String>) {
     Day5_TwistyTrampolinesMaze.part1()
     Day5_TwistyTrampolinesMaze.part2()
@@ -32,7 +34,7 @@ object Day5_TwistyTrampolinesMaze {
     //
     //How many steps does it take to reach the exit?
     val part1 = challenge("Day 5 - Part One") {
-        inputFile("5.in")
+        inputFile("5.txt")
         solveMultiLine {
             result = stepCount(it.map { it.toInt() }) //364539
         }
@@ -66,7 +68,7 @@ object Day5_TwistyTrampolinesMaze {
     //
     //How many steps does it now take to reach the exit?
     val part2 = challenge("Day 5 - Part Two") {
-        inputFile("5.in")
+        inputFile("5.txt")
         solveMultiLine {
             result = stepCount2(it.map { it.toInt() }) //27477714
         }

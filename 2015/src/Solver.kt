@@ -12,6 +12,7 @@ private const val MAX_RESULT_PRINT_LINES = 10
  * @param args main args, only reads the first argument as filename. absolute path or relative to `in/`. optional, asks for filename when not defined
  * @param block implementation solving the puzzle. input is the input file data by lines, output is the buffer to write the output to
  */
+@Deprecated("Replaced by challenge() in common package")
 internal fun solveFromInput(vararg args: String = arrayOf(),
                             block: (input: List<String>, output: BufferedWriter) -> Unit) {
     val start = Date()

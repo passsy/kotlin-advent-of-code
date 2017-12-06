@@ -1,3 +1,4 @@
+import com.pascalwelsch.aoc.challenge
 import java.util.*
 
 fun main(args: Array<String>) {

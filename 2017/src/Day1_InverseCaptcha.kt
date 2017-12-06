@@ -1,3 +1,5 @@
+import com.pascalwelsch.aoc.challenge
+
 fun main(args: Array<String>) {
     Day1_InverseCaptcha.part1()
     Day1_InverseCaptcha.part2()
@@ -27,7 +29,7 @@ object Day1_InverseCaptcha {
     //        91212129 produces 9 because the only digit that matches the next one is the last digit, 9.
     //What is the solution to your captcha?
     val part1 = challenge("Day 1 - Part One") {
-        inputFile("1.in")
+        inputFile("1.txt")
         solve {
             result = captcha1(it)
         }
@@ -60,7 +62,7 @@ object Day1_InverseCaptcha {
     //12131415 produces 4.
     //What is the solution to your new captcha?
     val part2 = challenge("Day 1 - Part Two") {
-        inputFile("1.in")
+        inputFile("1.txt")
         solve {
             result = captcha2(it)
         }

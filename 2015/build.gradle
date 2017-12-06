@@ -12,18 +12,19 @@ buildscript {
 apply plugin: 'kotlin'
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 sourceSets {
     main.java.srcDirs += 'src'
     main.resources.srcDirs += 'input'
     test.java.srcDirs += 'test'
+    test.resources.srcDirs += 'input'
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "io.reactivex.rxjava2:rxjava:2.1.5"
+    compile 'io.reactivex:rxkotlin:0.60.0'
 
     testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"

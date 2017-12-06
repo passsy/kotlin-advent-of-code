@@ -3,6 +3,8 @@ import Day2_CorruptionChecksum.evenDivisionPair
 import Day2_CorruptionChecksum.evenlyDivisibleChecksum
 import Day2_CorruptionChecksum.minMaxDiff
 import Day2_CorruptionChecksum.parseInputTable
+import Day2_CorruptionChecksum.part1
+import Day2_CorruptionChecksum.part2
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.catchThrowable
 import org.junit.Test
@@ -61,5 +63,15 @@ class Day2_CorruptionChecksumTest {
                 listOf(3, 8, 6, 5)
         )
         assertThat(evenlyDivisibleChecksum(table)).isEqualTo(9)
+    }
+
+    @Test
+    fun `solve Part1`() {
+        assertThat(part1()).isEqualTo("42378")
+    }
+
+    @Test
+    fun `solve Part2`() {
+        assertThat(part2()).isEqualTo("246")
     }
 }

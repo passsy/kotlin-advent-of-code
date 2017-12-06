@@ -13,8 +13,8 @@ annotation class CodingChallenge
 @CodingChallenge
 class ChallengeSolver(var name: String = "Challenge") {
 
-    operator fun invoke() {
-        _solve(requireNotNull(solver))
+    operator fun invoke(): String {
+        return _solve(requireNotNull(solver))
     }
 
     private var input: (() -> String)? = null
@@ -72,7 +72,7 @@ class ChallengeSolver(var name: String = "Challenge") {
         solver = Solver({ requireNotNull(input)() }, block)
     }
 
-    private fun <T> _solve(solver: Solver<T>) {
+    private fun <T> _solve(solver: Solver<T>): String {
         val title = "\nChallenge '$name'"
         val line = "".padStart(title.count(), '=')
         println("$title\n$line")
@@ -105,6 +105,7 @@ class ChallengeSolver(var name: String = "Challenge") {
         }
 
         println('\n')
+        return result
     }
 
 }

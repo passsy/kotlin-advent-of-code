@@ -1,3 +1,5 @@
+import Day4_Passphrases.part1
+import Day4_Passphrases.part2
 import Day4_Passphrases.validatePassphrase
 import Day4_Passphrases.validatePassphrase2
 import org.assertj.core.api.Assertions.assertThat
@@ -28,5 +30,15 @@ class Day4_PassphrasesTest {
     @Test
     fun `hard passphrase is invalid with anagrams`() {
         assertThat(validatePassphrase2("oiii ioii iioi iiio")).isFalse()
+    }
+
+    @Test
+    fun `solve Part1`() {
+        assertThat(part1()).isEqualTo("337")
+    }
+
+    @Test
+    fun `solve Part2`() {
+        assertThat(part2()).isEqualTo("231")
     }
 }

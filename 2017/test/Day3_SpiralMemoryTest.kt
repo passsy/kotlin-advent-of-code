@@ -1,5 +1,7 @@
 import Day3_SpiralMemory.distance
 import Day3_SpiralMemory.firstLargerNumber
+import Day3_SpiralMemory.part1
+import Day3_SpiralMemory.part2
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
@@ -69,5 +71,15 @@ class Day3_SpiralMemoryTest {
     fun `largest number - move right`() {
         assertThat(firstLargerNumber(12)).isEqualTo(23)
         assertThat(firstLargerNumber(24)).isEqualTo(25)
+    }
+
+    @Test
+    fun `solve Part1`() {
+        assertThat(part1()).isEqualTo("475")
+    }
+
+    @Test
+    fun `solve Part2`() {
+        assertThat(part2()).isEqualTo("279138")
     }
 }

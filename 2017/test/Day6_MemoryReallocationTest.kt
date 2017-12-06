@@ -1,7 +1,10 @@
+import Day6_MemoryReallocation.part1
+import Day6_MemoryReallocation.part2
 import Day6_MemoryReallocation.recursionLoopSize
 import Day6_MemoryReallocation.redistribute
 import Day6_MemoryReallocation.stepsUntilRecursion
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.Ignore
 import org.junit.Test
 
 class Day6_MemoryReallocationTest {
@@ -18,6 +21,7 @@ class Day6_MemoryReallocationTest {
         val redistributed = redistribute(listOf(0, 2, 7, 0))
         assertThat(redistributed).isEqualTo(listOf(2, 4, 1, 2))
     }
+
     @Test
     fun `redistribute - sample 1`() {
         val redistributed = redistribute(listOf(2, 4, 1, 2))
@@ -26,7 +30,7 @@ class Day6_MemoryReallocationTest {
 
     @Test
     fun `redistribute - sample 2`() {
-        val redistributed = redistribute(listOf(3 ,1 ,2, 3))
+        val redistributed = redistribute(listOf(3, 1, 2, 3))
         assertThat(redistributed).isEqualTo(listOf(0, 2, 3, 4))
     }
 
@@ -40,5 +44,17 @@ class Day6_MemoryReallocationTest {
     fun `recursion loop size - sample`() {
         val steps = recursionLoopSize(listOf(0, 2, 7, 0))
         assertThat(steps).isEqualTo(4)
+    }
+
+    @Test
+    @Ignore("slow test")
+    fun `solve Part1`() {
+        assertThat(part1()).isEqualTo("12841")
+    }
+
+    @Test
+    @Ignore("slow test")
+    fun `solve Part2`() {
+        assertThat(part2()).isEqualTo("8038")
     }
 }

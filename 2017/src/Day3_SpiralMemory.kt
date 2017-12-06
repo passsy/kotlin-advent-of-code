@@ -1,7 +1,3 @@
-package y2017
-
-import common.challenge
-
 fun main(args: Array<String>) {
     Day3_SpiralMemory.part1()
     Day3_SpiralMemory.part2()

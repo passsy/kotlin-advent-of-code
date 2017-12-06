@@ -6,24 +6,30 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M2'
     }
 }
 
 apply plugin: 'kotlin'
-apply plugin: 'org.junit.platform.gradle.plugin'
 
 repositories {
-    mavenCentral()
+    jcenter()
+}
+
+sourceSets {
+    main.kotlin.srcDirs += '2017/src'
+    main.resources.srcDirs += '2017/input'
+    test.kotlin.srcDirs += '2017/test'
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "io.reactivex.rxjava2:rxjava:2.1.5"
 
-
     testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testCompile 'org.assertj:assertj-core:3.5.2'
+}
 
+clean {
+    delete 'out' // could be too harsh
 }

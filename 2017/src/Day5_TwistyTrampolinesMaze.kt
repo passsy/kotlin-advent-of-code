@@ -1,7 +1,3 @@
-package y2017
-
-import common.challenge
-
 fun main(args: Array<String>) {
     Day5_TwistyTrampolinesMaze.part1()
     Day5_TwistyTrampolinesMaze.part2()
@@ -36,7 +32,7 @@ object Day5_TwistyTrampolinesMaze {
     //
     //How many steps does it take to reach the exit?
     val part1 = challenge("Day 5 - Part One") {
-        inputFile("2017/5.in")
+        inputFile("5.in")
         solveMultiLine {
             result = stepCount(it.map { it.toInt() }) //364539
         }
@@ -70,12 +66,13 @@ object Day5_TwistyTrampolinesMaze {
     //
     //How many steps does it now take to reach the exit?
     val part2 = challenge("Day 5 - Part Two") {
-        inputFile("2017/5.in")
+        inputFile("5.in")
         solveMultiLine {
             result = stepCount2(it.map { it.toInt() }) //27477714
         }
     }
 
     fun stepCount2(instructions: List<Int>) =
-            stepCount(instructions, { offset -> if (offset >= 3) offset - 1 else offset + 1 })
+            stepCount(instructions,
+                    { offset -> if (offset >= 3) offset - 1 else offset + 1 })
 }

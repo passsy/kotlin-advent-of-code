@@ -1,9 +1,7 @@
-package y2017
-
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-import y2017.Day3_SpiralMemory.distance
-import y2017.Day3_SpiralMemory.firstLargerNumber
+import Day3_SpiralMemory.distance
+import Day3_SpiralMemory.firstLargerNumber
 
 
 class SpiralMemoryTest {

@@ -1,7 +1,3 @@
-package y2017
-
-import common.challenge
-
 fun main(args: Array<String>) {
     Day2_CorruptionChecksum.part1()
     Day2_CorruptionChecksum.part2()
@@ -26,7 +22,7 @@ object Day2_CorruptionChecksum {
     //
     //What is the checksum for the spreadsheet in your puzzle input?
     val part1 = challenge("Day 2 - Part One") {
-        inputFile("2017/2.in")
+        inputFile("2.in")
         solveMultiLine {
             val table = parseInputTable(it)
             result = checksum(table) //42378
@@ -60,7 +56,7 @@ object Day2_CorruptionChecksum {
     //
     //What is the sum of each row's result in your puzzle input?
     val part2 = challenge("Day 2 - Part Two") {
-        inputFile("2017/2.in")
+        inputFile("2.in")
         solveMultiLine {
             val table = parseInputTable(it)
             result = evenlyDivisibleChecksum(table) //246

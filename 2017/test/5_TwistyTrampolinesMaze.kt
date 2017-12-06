@@ -1,9 +1,7 @@
-package y2017
-
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-import y2017.Day5_TwistyTrampolinesMaze.stepCount
-import y2017.Day5_TwistyTrampolinesMaze.stepCount2
+import Day5_TwistyTrampolinesMaze.stepCount
+import Day5_TwistyTrampolinesMaze.stepCount2
 
 
 class TwistyTrampolinesMaze {

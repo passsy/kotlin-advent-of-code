@@ -1,5 +1,3 @@
-package common
-
 import java.io.File
 import java.io.FileNotFoundException
 import kotlin.system.measureTimeMillis
@@ -38,7 +36,9 @@ class ChallengeSolver(var name: String = "Challenge") {
 
     fun ChallengeSolver.inputFile(path: String, trim: Boolean = true) {
         input = {
-            val file = File(Int::class.java.getResource(path).toURI())
+            val resource = Int::class.java.getResource(path)
+            if(resource == null) throw FileNotFoundException("could not load '$path'")
+            val file = File(resource.toURI())
             println("reading input file '${file.absolutePath}'")
             if (!file.exists()) {
                 throw FileNotFoundException(

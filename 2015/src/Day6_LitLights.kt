@@ -51,7 +51,7 @@ fun litLights(instructions: List<String>, gridSize: Int): Int {
 fun parseInstruction(instruction: String): LightInstruction {
     val regex = "(.*)\\s(\\d+),(\\d+)\\sthrough\\s(\\d+),(\\d+)".toRegex()
     try {
-        val (all, command, fromX, fromY, toX, toY) = regex.find(instruction)!!.groupValues
+        val (_, command, fromX, fromY, toX, toY) = regex.find(instruction)!!.groupValues
         val region = GridRegion(fromX.toInt(), fromY.toInt(), toX.toInt(), toY.toInt())
         val action: Action = when (command) {
             "turn on" -> Action.TURN_ON

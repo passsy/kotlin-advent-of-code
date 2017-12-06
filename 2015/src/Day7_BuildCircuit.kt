@@ -84,7 +84,7 @@ fun assembleCircuit(instructions: List<String>): Circuit {
 fun String.asCircuitInstruction(circuit: Circuit): CircuitInstruction {
     //println("parsing: $this")
     try {
-        val (all, in1, op, in2, output) =
+        val (_, in1, op, in2, output) =
                 "(.*)\\s(.*)\\s(.*) -> (.*)".toRegex().find(this)!!.groupValues
         val operation = when (op) {
             "AND" -> OperationType.AND
@@ -103,13 +103,13 @@ fun String.asCircuitInstruction(circuit: Circuit): CircuitInstruction {
     }
 
     try {
-        val (all, in1, output) = "NOT (.*) -> (.*)".toRegex().find(this)!!.groupValues
+        val (_, in1, output) = "NOT (.*) -> (.*)".toRegex().find(this)!!.groupValues
         return CircuitInstruction(output, Not(in1.toSignal(circuit)))
     } catch (e: Exception) {
 
     }
 
-    val (all, in1, output) = "(.*) -> (.*)".toRegex().find(this)!!.groupValues
+    val (_, in1, output) = "(.*) -> (.*)".toRegex().find(this)!!.groupValues
     return CircuitInstruction(output, in1.toSignal(circuit))
 
 

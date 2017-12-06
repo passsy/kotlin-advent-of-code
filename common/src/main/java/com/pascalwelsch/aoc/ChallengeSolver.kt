@@ -80,7 +80,7 @@ class ChallengeSolver(var name: String = "Challenge") {
         println("\ncom.pascalwelsch.aoc.Result of '$name':")
         val result = context.result.toString()
         if (result.isEmpty()) {
-            throw IllegalStateException("No output! result is empty")
+            throw IllegalStateException("No Result! output is empty")
         }
 
         result.lines().trimResults(MAX_RESULT_PRINT_LINES).forEach { println(it) }

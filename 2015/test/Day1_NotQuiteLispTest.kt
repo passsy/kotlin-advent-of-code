@@ -1,6 +1,7 @@
 import com.pascalwelsch.aoc.resourceFileText
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.junit.Ignore
 import org.junit.Test
 
 class Day1_NotQuiteLispTest {
@@ -35,6 +36,7 @@ class Day1_NotQuiteLispTest {
         assertThat(whatFloor(")())())")).isEqualTo(-3)
     }
 
+    @Ignore("slow test")
     @Test
     fun `solve part1`() {
         val input = resourceFileText("day1-1")

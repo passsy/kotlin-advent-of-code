@@ -1,11 +1,13 @@
 package y2017
 
 import com.pascalwelsch.aoc.challenge
+import y2017.Day7_RecursiveCircus.part1
+import y2017.Day7_RecursiveCircus.part2
 
 fun main(args: Array<String>) {
-
+    part1()
+    part2()
 }
-
 
 object Day7_RecursiveCircus {
     //--- Day 7: Recursive Circus ---

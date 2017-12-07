@@ -1,5 +1,7 @@
 package y2016
 
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.Test
 import y2016.Day1_Taxicab.Instruction
 import y2016.Day1_Taxicab.Position
 import y2016.Day1_Taxicab.Rotation.LEFT
@@ -9,8 +11,6 @@ import y2016.Day1_Taxicab.followInstructions
 import y2016.Day1_Taxicab.parseInstructions
 import y2016.Day1_Taxicab.part1
 import y2016.Day1_Taxicab.part2
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.Test
 
 class Day1_TaxicabTest {
 

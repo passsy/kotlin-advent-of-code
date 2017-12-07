@@ -2,7 +2,8 @@ package y2016
 
 import com.pascalwelsch.aoc.challenge
 import y2016.Day1_Taxicab.Orientation.*
-import y2016.Day1_Taxicab.Rotation.*
+import y2016.Day1_Taxicab.Rotation.LEFT
+import y2016.Day1_Taxicab.Rotation.RIGHT
 
 fun main(args: Array<String>) {
     Day1_Taxicab.part1()

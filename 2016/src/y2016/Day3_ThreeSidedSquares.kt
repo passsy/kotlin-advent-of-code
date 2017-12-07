@@ -72,6 +72,7 @@ object Day3_ThreeSidedSquares {
 
 
 }
+
 fun List<Day3_ThreeSidedSquares.Triangle>.verticalTriangles() = windowed(3, step = 3)
         .flatMap {
             listOf(Day3_ThreeSidedSquares.Triangle(it[0].a, it[1].a, it[2].a),

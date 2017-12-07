@@ -2,6 +2,7 @@ package y2017
 
 import com.pascalwelsch.aoc.resourceFileText
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.Ignore
 import org.junit.Test
 import y2017.Day7_RecursiveCircus.Node
 import y2017.Day7_RecursiveCircus.correctErrorForBalancedTree
@@ -90,8 +91,9 @@ class Day7_RecursiveCircusTest {
         assertThat(correctErrorForBalancedTree(input)).isEqualTo(60)
     }
 
+    @Ignore("executes too long")
     @Test
-    fun `solve part two`() {
+    fun `solve part 2`() {
         assertThat(part2.test()).isEqualTo("749")
     }
 }

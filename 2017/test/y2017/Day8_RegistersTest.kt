@@ -8,7 +8,7 @@ import y2017.Day8_Registers.Operation
 import y2017.Day8_Registers.Operator.DEC
 import y2017.Day8_Registers.Operator.INC
 import y2017.Day8_Registers.Register
-import y2017.Day8_Registers.Sign.*
+import y2017.Day8_Registers.Verification.*
 import y2017.Day8_Registers.parseInstruction
 import y2017.Day8_Registers.part1
 import y2017.Day8_Registers.part2

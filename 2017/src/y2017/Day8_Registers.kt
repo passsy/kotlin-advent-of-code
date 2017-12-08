@@ -1,9 +1,11 @@
 package y2017
 
 import com.pascalwelsch.aoc.challenge
-import y2017.Day8_Registers.Operator.DEC
-import y2017.Day8_Registers.Operator.INC
-import y2017.Day8_Registers.Sign.*
+
+fun main(args: Array<String>) {
+    Day8_Registers.part1()
+    Day8_Registers.part2()
+}
 
 object Day8_Registers {
     //--- Day 8: I Heard You Like Registers ---
@@ -39,32 +41,15 @@ object Day8_Registers {
     }
 
     class Register {
-        val r = hashMapOf<String, Int>()
+        private val r = hashMapOf<String, Int>()
+
+        private fun registerValue(register: String) = r[register] ?: 0
 
         fun execute(inst: Instruction) {
-            var satisfied = false
-            with(inst.condition) {
-                val rValue = r[register] ?: 0
-                satisfied = when (sign) {
-                    GREATER -> rValue > value
-                    SMALLER -> rValue < value
-                    GREATER_EQUALS -> rValue >= value
-                    SMALLER_EQUALS -> rValue <= value
-                    EQUALS -> rValue == value
-                    NOT_EQUALS -> rValue != value
-                }
 
-            }
-
-            if (satisfied) {
-                with(inst.operation) {
-                    val rValue = r[register] ?: 0
-
-                    r[register] = when (operator) {
-                        INC -> rValue + value
-                        DEC -> rValue - value
-                    }
-                }
+            if (inst.condition.verify(::registerValue)) {
+                val register = inst.operation.register
+                r[register] = inst.operation.execute(registerValue(register))
             }
         }
 
@@ -77,56 +62,58 @@ object Day8_Registers {
         val values = "(\\w+)\\s(\\w+)\\s(-*\\d+)\\sif\\s(\\w+)\\s(.*)\\s(-*\\d+)"
                 .toRegex().find(input)!!.groupValues
 
-        val op = when (values[2]) {
-            "inc" -> INC
-            "dec" -> DEC
+        val op: Operator = when (values[2]) {
+            "inc" -> Operator.INC
+            "dec" -> Operator.DEC
             else -> throw IllegalStateException("unknown operation ${values[2]}")
         }
+        val operation = Operation(values[1], op, values[3].toInt())
 
-        val operation = Operation(
-                register = values[1],
-                operator = op,
-                value = values[3].toInt())
-
-        val sign = when (values[5]) {
-            ">" -> GREATER
-            ">=" -> GREATER_EQUALS
-            "<" -> SMALLER
-            "<=" -> SMALLER_EQUALS
-            "!=" -> NOT_EQUALS
-            "==" -> EQUALS
+        val verification: Verification = when (values[5]) {
+            ">" -> Verification.GREATER
+            ">=" -> Verification.GREATER_EQUALS
+            "<" -> Verification.SMALLER
+            "<=" -> Verification.SMALLER_EQUALS
+            "==" -> Verification.EQUALS
+            "!=" -> Verification.NOT_EQUALS
             else -> throw IllegalStateException("unknown sign ${values[2]}")
         }
-
-        val condition = Condition(
-                register = values[4],
-                sign = sign,
-                value = values[6].toInt()
-        )
+        val condition = Condition(values[4], verification, values[6].toInt())
 
         return Instruction(condition, operation)
 
     }
 
-    data class Instruction(
-            val condition: Condition,
-            val operation: Operation
-    )
-
+    data class Instruction(val condition: Condition, val operation: Operation)
     data class Operation(
             val register: String,
-            val operator: Operator,
-            val value: Int
-    )
+            private val operator: Operator,
+            private val value: Int) {
+        fun execute(registerValue: Int) = operator.execute(registerValue, value)
+    }
 
     data class Condition(
-            val register: String,
-            val sign: Sign,
-            val value: Int
-    )
+            private val register: String,
+            private val verification: Verification,
+            private val value: Int) {
+        fun verify(registerValue: (register: String) -> Int) =
+                verification.verify(registerValue(register), value)
+    }
 
-    enum class Operator { INC, DEC }
-    enum class Sign { GREATER, SMALLER, GREATER_EQUALS, SMALLER_EQUALS, EQUALS, NOT_EQUALS }
+    enum class Operator(val execute: (Int, Int) -> Int) {
+        INC({ a, b -> a + b }),
+        DEC({ a, b -> a - b })
+    }
+
+    enum class Verification(val verify: (Int, Int) -> Boolean) {
+        GREATER({ a, b -> a > b }),
+        SMALLER({ a, b -> a < b }),
+        GREATER_EQUALS({ a, b -> a >= b }),
+        SMALLER_EQUALS({ a, b -> a <= b }),
+        EQUALS({ a, b -> a == b }),
+        NOT_EQUALS({ a, b -> a != b })
+    }
+
 
     //--- Part Two ---
     //

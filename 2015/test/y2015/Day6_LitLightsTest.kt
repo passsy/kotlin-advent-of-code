@@ -15,13 +15,12 @@ class Day6_LitLightsTest {
                 .isEqualTo(1000 * 1000)
     }
 
-    // toggle 0,0 through 999,0 would toggle the first line of 1000 lights, turning off the ones
+    // toggle 0,0 through 99,0 would toggle the first line of 100 lights, turning off the ones
     // that were on, and turning on the ones that were off.
     @Test
     fun `switch lights - toggle`() {
-        assertThat(litLights(listOf("toggle 0,0 through 999,0"), 1000))
-                .isEqualTo(1000)
-
+        assertThat(litLights(listOf("toggle 0,0 through 99,0"), 100))
+                .isEqualTo(100)
 
         val beforeToggle = litLights(listOf(
                 "turn on 10,10 through 14,14",
@@ -100,8 +99,8 @@ class Day6_LitLightsTest {
     // toggle 0,0 through 999,999 would increase the total brightness by 2000000.
     @Test
     fun `dimmable lights - increase every light`() {
-        assertThat(litLightsWithBrightness(listOf("toggle 0,0 through 999,999"), 1000))
-                .isEqualTo(2000000)
+        assertThat(litLightsWithBrightness(listOf("toggle 0,0 through 99,99"), 100))
+                .isEqualTo(20000)
     }
 
     @Ignore("slow test")

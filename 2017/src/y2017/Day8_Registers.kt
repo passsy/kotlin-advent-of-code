@@ -110,7 +110,7 @@ object Day8_Registers {
         SMALLER({ a, b -> a < b }),
         GREATER_EQUALS({ a, b -> a >= b }),
         SMALLER_EQUALS({ a, b -> a <= b }),
-        EQUALS({ a, b -> a == b }),
+        EQUALS({ a, b -> a.equals(b) }),
         NOT_EQUALS({ a, b -> a != b })
     }
 

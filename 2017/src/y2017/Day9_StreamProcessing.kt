@@ -65,11 +65,11 @@ object Day9_StreamProcessing {
 
     fun parse(input: String): StreamData {
 
-        var depth = 0
         var groups = 0
         var groupScore = 0
         var garbageCount = 0
 
+        var depth = 0
         var inGarbage = false
         var canceled = false
         input.forEach {

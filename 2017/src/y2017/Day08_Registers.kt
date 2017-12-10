@@ -3,11 +3,11 @@ package y2017
 import com.pascalwelsch.aoc.challenge
 
 fun main(args: Array<String>) {
-    Day8_Registers.part1()
-    Day8_Registers.part2()
+    Day08_Registers.part1()
+    Day08_Registers.part2()
 }
 
-object Day8_Registers {
+object Day08_Registers {
     //--- Day 8: I Heard You Like Registers ---
     //
     //You receive a signal directly from the CPU. Because of your recent assistance with jump instructions, it would like you to compute the result of a series of unusual register instructions.

@@ -2,18 +2,18 @@ package y2017
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-import y2017.Day8_Registers.Condition
-import y2017.Day8_Registers.Instruction
-import y2017.Day8_Registers.Operation
-import y2017.Day8_Registers.Operator.DEC
-import y2017.Day8_Registers.Operator.INC
-import y2017.Day8_Registers.Register
-import y2017.Day8_Registers.Verification.*
-import y2017.Day8_Registers.parseInstruction
-import y2017.Day8_Registers.part1
-import y2017.Day8_Registers.part2
+import y2017.Day08_Registers.Condition
+import y2017.Day08_Registers.Instruction
+import y2017.Day08_Registers.Operation
+import y2017.Day08_Registers.Operator.DEC
+import y2017.Day08_Registers.Operator.INC
+import y2017.Day08_Registers.Register
+import y2017.Day08_Registers.Verification.*
+import y2017.Day08_Registers.parseInstruction
+import y2017.Day08_Registers.part1
+import y2017.Day08_Registers.part2
 
-class Day8_RegistersTest {
+class Day08_RegistersTest {
 
     @Test
     fun `parse instruction`() {

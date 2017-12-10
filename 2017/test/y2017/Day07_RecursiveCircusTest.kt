@@ -4,14 +4,14 @@ import com.pascalwelsch.aoc.resourceFileText
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Ignore
 import org.junit.Test
-import y2017.Day7_RecursiveCircus.Node
-import y2017.Day7_RecursiveCircus.correctErrorForBalancedTree
-import y2017.Day7_RecursiveCircus.findRootNode
-import y2017.Day7_RecursiveCircus.parseInfo
-import y2017.Day7_RecursiveCircus.part1
-import y2017.Day7_RecursiveCircus.part2
+import y2017.Day07_RecursiveCircus.Node
+import y2017.Day07_RecursiveCircus.correctErrorForBalancedTree
+import y2017.Day07_RecursiveCircus.findRootNode
+import y2017.Day07_RecursiveCircus.parseInfo
+import y2017.Day07_RecursiveCircus.part1
+import y2017.Day07_RecursiveCircus.part2
 
-class Day7_RecursiveCircusTest {
+class Day07_RecursiveCircusTest {
 
     @Test
     fun `parse info without childs`() {

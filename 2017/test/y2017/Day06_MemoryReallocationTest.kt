@@ -3,13 +3,13 @@ package y2017
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Ignore
 import org.junit.Test
-import y2017.Day6_MemoryReallocation.part1
-import y2017.Day6_MemoryReallocation.part2
-import y2017.Day6_MemoryReallocation.recursionLoopSize
-import y2017.Day6_MemoryReallocation.redistribute
-import y2017.Day6_MemoryReallocation.stepsUntilRecursion
+import y2017.Day06_MemoryReallocation.part1
+import y2017.Day06_MemoryReallocation.part2
+import y2017.Day06_MemoryReallocation.recursionLoopSize
+import y2017.Day06_MemoryReallocation.redistribute
+import y2017.Day06_MemoryReallocation.stepsUntilRecursion
 
-class Day6_MemoryReallocationTest {
+class Day06_MemoryReallocationTest {
 
     @Test
     fun `redistribute returns a new list instance`() {

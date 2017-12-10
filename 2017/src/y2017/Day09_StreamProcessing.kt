@@ -3,12 +3,12 @@ package y2017
 import com.pascalwelsch.aoc.challenge
 
 fun main(args: Array<String>) {
-    Day9_StreamProcessing.part1()
-    Day9_StreamProcessing.part2()
+    Day09_StreamProcessing.part1()
+    Day09_StreamProcessing.part2()
 }
 
 
-object Day9_StreamProcessing {
+object Day09_StreamProcessing {
 
     //--- Day 9: Stream Processing ---
     //

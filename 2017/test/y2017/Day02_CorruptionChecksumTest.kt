@@ -3,15 +3,15 @@ package y2017
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.catchThrowable
 import org.junit.Test
-import y2017.Day2_CorruptionChecksum.checksum
-import y2017.Day2_CorruptionChecksum.evenDivisionPair
-import y2017.Day2_CorruptionChecksum.evenlyDivisibleChecksum
-import y2017.Day2_CorruptionChecksum.minMaxDiff
-import y2017.Day2_CorruptionChecksum.parseInputTable
-import y2017.Day2_CorruptionChecksum.part1
-import y2017.Day2_CorruptionChecksum.part2
+import y2017.Day02_CorruptionChecksum.checksum
+import y2017.Day02_CorruptionChecksum.evenDivisionPair
+import y2017.Day02_CorruptionChecksum.evenlyDivisibleChecksum
+import y2017.Day02_CorruptionChecksum.minMaxDiff
+import y2017.Day02_CorruptionChecksum.parseInputTable
+import y2017.Day02_CorruptionChecksum.part1
+import y2017.Day02_CorruptionChecksum.part2
 
-class Day2_CorruptionChecksumTest {
+class Day02_CorruptionChecksumTest {
 
     @Test
     fun parseTable() {

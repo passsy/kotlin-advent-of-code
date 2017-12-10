@@ -2,11 +2,11 @@ package y2017
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-import y2017.Day9_StreamProcessing.parse
-import y2017.Day9_StreamProcessing.part1
-import y2017.Day9_StreamProcessing.part2
+import y2017.Day09_StreamProcessing.parse
+import y2017.Day09_StreamProcessing.part1
+import y2017.Day09_StreamProcessing.part2
 
-class Day9_StreamProcessingTest {
+class Day09_StreamProcessingTest {
     @Test
     fun `one simple group`() {
         val result = parse("{}")

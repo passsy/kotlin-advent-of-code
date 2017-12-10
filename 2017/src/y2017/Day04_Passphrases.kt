@@ -3,11 +3,11 @@ package y2017
 import com.pascalwelsch.aoc.challenge
 
 fun main(args: Array<String>) {
-    Day4_Passphrases.part1()
-    Day4_Passphrases.part2()
+    Day04_Passphrases.part1()
+    Day04_Passphrases.part2()
 }
 
-object Day4_Passphrases {
+object Day04_Passphrases {
 
     //--- Day 4: High-Entropy Passphrases ---
     //

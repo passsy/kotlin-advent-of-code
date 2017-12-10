@@ -3,11 +3,11 @@ package y2017
 import com.pascalwelsch.aoc.challenge
 
 fun main(args: Array<String>) {
-    Day5_TwistyTrampolinesMaze.part1()
-    Day5_TwistyTrampolinesMaze.part2()
+    Day05_TwistyTrampolinesMaze.part1()
+    Day05_TwistyTrampolinesMaze.part2()
 }
 
-object Day5_TwistyTrampolinesMaze {
+object Day05_TwistyTrampolinesMaze {
 
     //--- Day 5: A Maze of Twisty Trampolines, All Alike ---
     //

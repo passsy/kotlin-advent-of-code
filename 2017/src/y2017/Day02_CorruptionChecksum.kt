@@ -3,11 +3,11 @@ package y2017
 import com.pascalwelsch.aoc.challenge
 
 fun main(args: Array<String>) {
-    Day2_CorruptionChecksum.part1()
-    Day2_CorruptionChecksum.part2()
+    Day02_CorruptionChecksum.part1()
+    Day02_CorruptionChecksum.part2()
 }
 
-object Day2_CorruptionChecksum {
+object Day02_CorruptionChecksum {
 
     //--- Day 2: Corruption Checksum ---
     //

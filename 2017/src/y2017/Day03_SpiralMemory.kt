@@ -3,11 +3,11 @@ package y2017
 import com.pascalwelsch.aoc.challenge
 
 fun main(args: Array<String>) {
-    Day3_SpiralMemory.part1()
-    Day3_SpiralMemory.part2()
+    Day03_SpiralMemory.part1()
+    Day03_SpiralMemory.part2()
 }
 
-object Day3_SpiralMemory {
+object Day03_SpiralMemory {
 
     //--- Day 3: Spiral Memory ---
     //

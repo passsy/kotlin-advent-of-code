@@ -2,12 +2,12 @@ package y2017
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-import y2017.Day4_Passphrases.part1
-import y2017.Day4_Passphrases.part2
-import y2017.Day4_Passphrases.validatePassphrase
-import y2017.Day4_Passphrases.validatePassphrase2
+import y2017.Day04_Passphrases.part1
+import y2017.Day04_Passphrases.part2
+import y2017.Day04_Passphrases.validatePassphrase
+import y2017.Day04_Passphrases.validatePassphrase2
 
-class Day4_PassphrasesTest {
+class Day04_PassphrasesTest {
 
     @Test
     fun `passphrase is valid for distinct words`() {

@@ -4,11 +4,11 @@ import com.pascalwelsch.aoc.challenge
 import java.util.*
 
 fun main(args: Array<String>) {
-    Day6_MemoryReallocation.part1()
-    Day6_MemoryReallocation.part2()
+    Day06_MemoryReallocation.part1()
+    Day06_MemoryReallocation.part2()
 }
 
-object Day6_MemoryReallocation {
+object Day06_MemoryReallocation {
 
     //--- Day 6: Memory Reallocation ---
     //

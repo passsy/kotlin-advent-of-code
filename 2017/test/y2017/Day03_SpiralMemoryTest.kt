@@ -2,13 +2,13 @@ package y2017
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-import y2017.Day3_SpiralMemory.distance
-import y2017.Day3_SpiralMemory.firstLargerNumber
-import y2017.Day3_SpiralMemory.part1
-import y2017.Day3_SpiralMemory.part2
+import y2017.Day03_SpiralMemory.distance
+import y2017.Day03_SpiralMemory.firstLargerNumber
+import y2017.Day03_SpiralMemory.part1
+import y2017.Day03_SpiralMemory.part2
 
 
-class Day3_SpiralMemoryTest {
+class Day03_SpiralMemoryTest {
 
     /**
      * Data from square 1 is carried 0 steps, since it's at the access port.

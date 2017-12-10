@@ -3,13 +3,13 @@ package y2017
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Ignore
 import org.junit.Test
-import y2017.Day5_TwistyTrampolinesMaze.part1
-import y2017.Day5_TwistyTrampolinesMaze.part2
-import y2017.Day5_TwistyTrampolinesMaze.stepCount
-import y2017.Day5_TwistyTrampolinesMaze.stepCount2
+import y2017.Day05_TwistyTrampolinesMaze.part1
+import y2017.Day05_TwistyTrampolinesMaze.part2
+import y2017.Day05_TwistyTrampolinesMaze.stepCount
+import y2017.Day05_TwistyTrampolinesMaze.stepCount2
 
 
-class Day5_TwistyTrampolinesMazeTest {
+class Day05_TwistyTrampolinesMazeTest {
 
     @Test
     fun `small jump sample, exit at end`() {

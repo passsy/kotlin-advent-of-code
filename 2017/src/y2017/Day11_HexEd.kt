@@ -2,6 +2,7 @@ package y2017
 
 import com.pascalwelsch.aoc.challenge
 import y2017.Day11_HexEd.HexDirection.*
+import kotlin.math.abs
 import kotlin.math.max
 
 fun main(args: Array<String>) {
@@ -49,37 +50,37 @@ object Day11_HexEd {
         return directions.fold(origin, { position, direction -> position + direction })
     }
 
-    enum class HexDirection {
-        NORTH, NORTH_EAST, SOUTH_EAST, SOUTH, SOUTH_WEST, NORTH_WEST;
-
-        companion object {
-            fun from(direction: String): HexDirection = when (direction) {
-                "n" -> NORTH
-                "ne" -> NORTH_EAST
-                "se" -> SOUTH_EAST
-                "s" -> SOUTH
-                "sw" -> SOUTH_WEST
-                "nw" -> NORTH_WEST
-                else -> throw IllegalArgumentException("unknown direction $direction")
-            }
-        }
-    }
-
     data class HexPosition(val x: Int, val y: Int) {
         fun distance(to: HexPosition): Int {
             val dy = to.y - y
             val dx = to.x - x
-            val dDiff = Math.abs(dx - dy)
-            return Math.max(dDiff, Math.max(Math.abs(dx), Math.abs(dy)))
+            val dDiff = dx - dy
+            return maxOf(abs(dDiff), abs(dx), abs(dy))
         }
 
         operator fun plus(direction: HexDirection): HexPosition = when (direction) {
-            NORTH -> HexPosition(x, y + 1)
-            NORTH_EAST -> HexPosition(x + 1, y + 1)
-            SOUTH_EAST -> HexPosition(x + 1, y)
-            SOUTH -> HexPosition(x, y - 1)
-            SOUTH_WEST -> HexPosition(x - 1, y - 1)
-            NORTH_WEST -> HexPosition(x - 1, y)
+            NORTH -> copy(y = y + 1)
+            SOUTH -> copy(y = y - 1)
+            SOUTH_EAST -> copy(x = x + 1)
+            NORTH_WEST -> copy(x = x - 1)
+            NORTH_EAST -> copy(x = x + 1, y = y + 1)
+            SOUTH_WEST -> copy(x = x - 1, y = y - 1)
+        }
+    }
+
+    enum class HexDirection {
+        NORTH, SOUTH, SOUTH_EAST, NORTH_WEST, NORTH_EAST, SOUTH_WEST;
+
+        companion object {
+            fun from(direction: String): HexDirection = when (direction) {
+                "n" -> NORTH
+                "s" -> SOUTH
+                "se" -> SOUTH_EAST
+                "nw" -> NORTH_WEST
+                "ne" -> NORTH_EAST
+                "sw" -> SOUTH_WEST
+                else -> throw IllegalArgumentException("unknown direction $direction")
+            }
         }
     }
 

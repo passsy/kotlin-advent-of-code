@@ -45,6 +45,10 @@ object Day11_HexEd {
         }
     }
 
+    fun followDirections(directions: List<HexDirection>, origin: HexPosition): HexPosition {
+        return directions.fold(origin, { position, direction -> position + direction })
+    }
+    
     enum class HexDirection {
         NORTH, NORTH_EAST, SOUTH_EAST, SOUTH, SOUTH_WEST, NORTH_WEST;
 
@@ -59,10 +63,6 @@ object Day11_HexEd {
                 else -> throw IllegalArgumentException("unknown direction $direction")
             }
         }
-    }
-
-    fun followDirections(directions: List<HexDirection>, origin: HexPosition): HexPosition {
-        return directions.fold(origin, { position, direction -> position + direction })
     }
 
     data class HexPosition(val x: Int, val y: Int) {

@@ -14,39 +14,39 @@ class Day12_DigitalPlumberTest {
     @Test
     fun `parse input`() {
         assertThat(parseRelation("0 <-> 2"))
-                .isEqualTo(0 to listOf(2))
+                .isEqualTo(setOf(0, 2))
 
         assertThat(parseRelation("1 <-> 1"))
-                .isEqualTo(1 to listOf(1))
+                .isEqualTo(setOf(1))
 
         assertThat(parseRelation("2 <-> 0, 3, 4"))
-                .isEqualTo(2 to listOf(0, 3, 4))
+                .isEqualTo(setOf(2, 0, 3, 4))
 
         assertThat(parseRelation("3 <-> 2, 4"))
-                .isEqualTo(3 to listOf(2, 4))
+                .isEqualTo(setOf(3, 2, 4))
 
         assertThat(parseRelation("4 <-> 2, 3, 6"))
-                .isEqualTo(4 to listOf(2, 3, 6))
+                .isEqualTo(setOf(4, 2, 3, 6))
 
         assertThat(parseRelation("5 <-> 6"))
-                .isEqualTo(5 to listOf(6))
+                .isEqualTo(setOf(5, 6))
 
         assertThat(parseRelation("6 <-> 4, 5"))
-                .isEqualTo(6 to listOf(4, 5))
+                .isEqualTo(setOf(6, 4, 5))
     }
 
     @Test
     fun `sample 1`() {
         val connections = listOf(
-                0 to listOf(2),
-                1 to listOf(1),
-                2 to listOf(0, 3, 4),
-                3 to listOf(2, 4),
-                4 to listOf(2, 3, 6),
-                5 to listOf(6),
-                6 to listOf(4, 5)
+                setOf(0, 2),
+                setOf(1),
+                setOf(2, 0, 3, 4),
+                setOf(3, 2, 4),
+                setOf(4, 2, 3, 6),
+                setOf(5, 6),
+                setOf(6, 4, 5)
         )
-        assertThat(connectedPrograms(0, buildMap(connections))).isEqualTo(listOf(0, 2, 3, 4, 5, 6))
+        assertThat(connectedPrograms(0, buildMap(connections))).isEqualTo(setOf(0, 2, 3, 4, 5, 6))
     }
 
     @Test

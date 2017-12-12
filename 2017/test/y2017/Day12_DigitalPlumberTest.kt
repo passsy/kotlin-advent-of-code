@@ -1,9 +1,11 @@
 package y2017
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.Ignore
 import org.junit.Test
 import y2017.Day12_DigitalPlumber.buildMap
-import y2017.Day12_DigitalPlumber.connectedPrograms
+import y2017.Day12_DigitalPlumber.connectedProgramCount
+import y2017.Day12_DigitalPlumber.groupCount
 import y2017.Day12_DigitalPlumber.parseRelation
 import y2017.Day12_DigitalPlumber.part1
 import y2017.Day12_DigitalPlumber.part2
@@ -37,7 +39,7 @@ class Day12_DigitalPlumberTest {
 
     @Test
     fun `sample 1`() {
-        val connections = listOf(
+        val map = buildMap(listOf(
                 setOf(0, 2),
                 setOf(1),
                 setOf(2, 0, 3, 4),
@@ -45,15 +47,32 @@ class Day12_DigitalPlumberTest {
                 setOf(4, 2, 3, 6),
                 setOf(5, 6),
                 setOf(6, 4, 5)
-        )
-        assertThat(connectedPrograms(0, buildMap(connections))).isEqualTo(setOf(0, 2, 3, 4, 5, 6))
+        ))
+        assertThat(connectedProgramCount(0, map)).isEqualTo(6)
     }
 
+    @Ignore("too slow")
     @Test
     fun `solve part one`() {
         assertThat(part1.test()).isEqualTo("283")
     }
 
+    @Test
+    fun `sample 2`() {
+        val map = buildMap(listOf(
+                setOf(0, 2),
+                setOf(1),
+                setOf(2, 0, 3, 4),
+                setOf(3, 2, 4),
+                setOf(4, 2, 3, 6),
+                setOf(5, 6),
+                setOf(6, 4, 5)
+        ))
+        assertThat(groupCount(map)).isEqualTo(2)
+    }
+
+
+    @Ignore("too slow")
     @Test
     fun `solve part two`() {
         assertThat(part2.test()).isEqualTo("195")

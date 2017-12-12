@@ -11,6 +11,7 @@ fun main(args: Array<String>) {
 
 
 object Day12_DigitalPlumber {
+
     //--- Day 12: Digital Plumber ---
     //
     //Walking along the memory banks of the stream, you find a small village that is experiencing a little confusion: some programs can't communicate with each other.
@@ -48,11 +49,11 @@ object Day12_DigitalPlumber {
 
         solveMultiLine {
             val map = buildMap(it.map { parseRelation(it) })
-            result = connectedPrograms(0, map).count()
+            result = connectedProgramCount(0, map)
         }
     }
 
-    fun connectedPrograms(of: Int, dualCons: Set<Set<Int>>) = dualCons.first { of in it }
+    fun connectedProgramCount(name: Int, map: Set<Set<Int>>) = map.first { name in it }.count()
 
     fun buildMap(connections: Collection<Set<Int>>): Set<Set<Int>> {
         val map = mutableSetOf<Set<Int>>()
@@ -66,7 +67,7 @@ object Day12_DigitalPlumber {
                 } else {
                     // combine groups
                     map.removeAll(found)
-                    map.add(found.flatMap { it }.toSet() + list)
+                    map.add(list + found.flatMap { it })
                 }
             }
         }
@@ -76,7 +77,7 @@ object Day12_DigitalPlumber {
 
     fun parseRelation(input: String): Set<Int> {
         val (_, name, connections) = "(\\d+) <-> (.*)".toRegex().find(input)!!.groupValues
-        // simplify because each item can talk to each other, key value pair is not required
+        // simplify because all can talk to each other, put them in one set
         return setOf(name.toInt()) + connections.split(", ").map { it.toInt() }
     }
 
@@ -89,12 +90,14 @@ object Day12_DigitalPlumber {
     //In the example above, there were 2 groups: one consisting of programs 0,2,3,4,5,6, and the other consisting solely of program 1.
     //
     //How many groups are there in total?
-    val part2 = challenge("Day 12 - Part One") {
+    val part2 = challenge("Day 12 - Part Two") {
         inputFile("2017/12.txt")
 
         solveMultiLine {
             val map = buildMap(it.map { parseRelation(it) })
-            result = map.count()
+            result = groupCount(map)
         }
     }
+
+    fun groupCount(map: Set<Set<Int>>) = map.count()
 }

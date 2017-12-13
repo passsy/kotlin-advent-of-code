@@ -1,7 +1,6 @@
 package y2017
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Ignore
 import org.junit.Test
 import y2017.Day14_PacketScanners.Layer
 import y2017.Day14_PacketScanners.fastestPass
@@ -39,7 +38,6 @@ class Day14_PacketScannersTest {
         assertThat(fastestPass(layers)).isEqualTo(10)
     }
 
-    @Ignore("takes >8s to find the solution")
     @Test
     fun `solve part 2`() {
         assertThat(part2.test()).isEqualTo("3865118")

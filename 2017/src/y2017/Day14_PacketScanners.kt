@@ -3,6 +3,7 @@ package y2017
 import com.pascalwelsch.aoc.challenge
 import y2017.Day14_PacketScanners.part1
 import y2017.Day14_PacketScanners.part2
+import kotlin.coroutines.experimental.buildIterator
 
 fun main(args: Array<String>) {
     part1()
@@ -51,30 +52,16 @@ object Day14_PacketScanners {
     }
 
     fun fastestPass(layers: List<Layer>): Int {
-        val maxLayer = layers.map { it.depth }.max()!!
-
-        var offset = 0
-        while (true) {
-            try {
-                for (position in 0..maxLayer) {
-                    val layer = layers.firstOrNull { it.depth == position } ?: continue
-
-                    val clock = position + offset
-
-                    if (clock % (layer.range * 2 - 2) == 0) {
-                        // caught
-                        throw CaughtException()
-                    }
-                }
-                // save pass
+        generateSequence(0, Int::inc).forEach { offset ->
+            val pass = layers.none {
+                val clock = it.depth + offset
+                clock % (it.range * 2 - 2) == 0
+            }
+            if (pass) {
                 return offset
-
-            } catch (e: CaughtException) {
-                // next round
-                offset++
             }
         }
+        throw IllegalStateException("sequence should never end without result")
     }
 
-    class CaughtException : Throwable()
 }

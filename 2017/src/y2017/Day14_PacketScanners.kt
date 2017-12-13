@@ -56,7 +56,7 @@ object Day14_PacketScanners {
         return delay
     }
 
-    private fun List<Layer>.passes(delay: Int) = none {
+    private fun List<Layer>.passes(delay: Int) = !any {
         val clock = it.depth + delay
         clock % (it.range * 2 - 2) == 0
     }

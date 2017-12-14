@@ -9,7 +9,7 @@ import y2017.Day14_PacketScanners.part2
 import y2017.Day14_PacketScanners.severity
 
 
-class Day14_PacketScannersTest {
+class Day13_PacketScannersTest {
 
     @Test
     fun `sample 1`() {

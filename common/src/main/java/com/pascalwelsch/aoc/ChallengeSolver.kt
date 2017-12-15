@@ -26,7 +26,7 @@ class ChallengeSolver(var name: String = "Challenge") {
         return _solve(requireNotNull(solver))
     }
 
-    private var input: (() -> String)? = null
+    private var input: (() -> String)? = {"No input provided"}
     private var outFile: (() -> File)? = null
     private var solver: Solver<*>? = null
 

@@ -32,6 +32,10 @@ fun Byte.toSignedInt(): Int {
     return toInt() and 0xFF
 }
 
+fun String.toBits(): String {
+    return chunked(2).map { Integer.parseInt(it.toUpperCase(), 16).toByte().toBits() }.joinToString("")
+}
+
 /**
  * outputs the 8 bits as string
  * <p>

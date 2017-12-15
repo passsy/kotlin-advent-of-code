@@ -2,11 +2,11 @@ package y2017
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-import y2017.Day14_PacketScanners.Layer
-import y2017.Day14_PacketScanners.fastestPass
-import y2017.Day14_PacketScanners.part1
-import y2017.Day14_PacketScanners.part2
-import y2017.Day14_PacketScanners.severity
+import y2017.Day13_PacketScanners.Layer
+import y2017.Day13_PacketScanners.fastestPass
+import y2017.Day13_PacketScanners.part1
+import y2017.Day13_PacketScanners.part2
+import y2017.Day13_PacketScanners.severity
 
 
 class Day13_PacketScannersTest {

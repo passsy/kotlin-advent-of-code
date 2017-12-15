@@ -114,9 +114,7 @@ object Day15_DuelingGenerators {
     //
     //After 5 million pairs, but using this new generator logic, what is the judge's final count?
     val part2 = challenge("Day 15 - Part Two") {
-        inputFile("2017/15.txt")
-
-        solveMultiLine {
+        solve {
             val generatorA2 = generatorA.filter { it % 4L == 0L }
             val generatorB2 = generatorB.filter { it % 8L == 0L }
 

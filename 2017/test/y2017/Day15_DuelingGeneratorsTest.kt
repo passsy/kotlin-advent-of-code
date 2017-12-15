@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.Ignore
 import org.junit.Test
 import y2017.Day15_DuelingGenerators.generator
-import y2017.Day15_DuelingGenerators.judge
+import y2017.Day15_DuelingGenerators.judgeCount
 import y2017.Day15_DuelingGenerators.part1
 import y2017.Day15_DuelingGenerators.part2
 
@@ -27,7 +27,7 @@ class Day15_DuelingGeneratorsTest {
 
     @Test
     fun `judge sample`() {
-        assertThat(judge(testGeneratorA, testGeneratorB, 5)).isEqualTo(1)
+        assertThat(judgeCount(testGeneratorA, testGeneratorB, 5)).isEqualTo(1)
     }
 
     @Ignore("executes too long")
@@ -38,7 +38,7 @@ class Day15_DuelingGeneratorsTest {
 
     @Test
     fun `solve part one simplified`() {
-        assertThat(judge(testGeneratorA, testGeneratorB, 50_000)).isEqualTo(3)
+        assertThat(judgeCount(testGeneratorA, testGeneratorB, 50_000)).isEqualTo(3)
     }
 
     @Ignore("executes too long")
@@ -53,7 +53,7 @@ class Day15_DuelingGeneratorsTest {
         val generatorA2 = testGeneratorA.filter { it % 4L == 0L }
         val generatorB2 = testGeneratorB.filter { it % 8L == 0L }
 
-        assertThat(judge(generatorA2, generatorB2, 9_000)).isEqualTo(2)
+        assertThat(judgeCount(generatorA2, generatorB2, 9_000)).isEqualTo(2)
     }
 
 }

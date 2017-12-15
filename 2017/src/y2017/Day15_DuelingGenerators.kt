@@ -52,7 +52,7 @@ object Day15_DuelingGenerators {
     //After 40 million pairs, what is the judge's final count?
     val part1 = challenge("Day 15 - Part One") {
         solve {
-            result = judge(generatorA, generatorB, 40_000_000)
+            result = judgeCount(generatorA, generatorB, 40_000_000)
         }
     }
 
@@ -62,7 +62,7 @@ object Day15_DuelingGenerators {
     private val generatorA = generator(883, 16807)
     private val generatorB = generator(879, 48271)
 
-    fun judge(genA: Sequence<Long>, genB: Sequence<Long>, rounds: Int): Int =
+    fun judgeCount(genA: Sequence<Long>, genB: Sequence<Long>, rounds: Int): Int =
             (genA zip genB).take(rounds)
                     .filter { (it.first shl 16).toInt() == (it.second shl 16).toInt() }
                     .count()
@@ -120,7 +120,7 @@ object Day15_DuelingGenerators {
             val generatorA2 = generatorA.filter { it % 4L == 0L }
             val generatorB2 = generatorB.filter { it % 8L == 0L }
 
-            result = judge(generatorA2, generatorB2, 5_000_000)
+            result = judgeCount(generatorA2, generatorB2, 5_000_000)
         }
     }
 

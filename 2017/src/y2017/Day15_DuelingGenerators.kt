@@ -51,25 +51,16 @@ object Day15_DuelingGenerators {
     //
     //After 40 million pairs, what is the judge's final count?
     val part1 = challenge("Day 15 - Part One") {
-        inputFile("2017/15.txt")
-
-        solveMultiLine {
-            val generators = it.map {
-                val (_, name, startValue) =
-                        "Generator (\\w+) starts with (\\d+)".toRegex().find(it)!!.groupValues
-                Generator(name, startValue.toLong())
-            }
-
-            val gA = generators[0].apply { factor = 16807 }
-            val gB = generators[1].apply { factor = 48271 }
-
-            result = judge(gA, gB)
+        solve {
+            result = judge(generatorA, generatorB, 40_000_000)
         }
     }
 
-    fun judge(gA: Sequence<Long>, gB: Sequence<Long>, rounds: Int = 40_000_000): Int {
-        return gA.zip(gB)
-                .take(rounds)
+    private val generatorA = Generator(883, 16807)
+    private val generatorB = Generator(879, 48271)
+
+    fun judge(genA: Sequence<Long>, genB: Sequence<Long>, rounds: Int): Int {
+        return (genA zip genB).take(rounds)
                 .filter {
                     val a = it.first shl 16
                     val b = it.second shl 16
@@ -78,20 +69,17 @@ object Day15_DuelingGenerators {
                 .count()
     }
 
-    class Generator(val name: String, val start: Long) : Sequence<Long> {
-        var factor: Long = 0
+    class Generator(val start: Long, val factor: Long) : Sequence<Long> {
 
-        override fun iterator(): Iterator<Long> {
-            return object : Iterator<Long> {
-                var last = start
+        override fun iterator(): Iterator<Long> = object : Iterator<Long> {
+            var last = start
 
-                override fun hasNext() = true
+            override fun hasNext() = true
 
-                override fun next(): Long {
-                    val newValue = (last * factor).rem(Int.MAX_VALUE)
-                    last = newValue
-                    return newValue
-                }
+            override fun next(): Long {
+                val newValue = (last * factor).rem(Int.MAX_VALUE)
+                last = newValue
+                return newValue
             }
         }
     }
@@ -147,16 +135,11 @@ object Day15_DuelingGenerators {
         inputFile("2017/15.txt")
 
         solveMultiLine {
-            val generators = it.map {
-                val (_, name, startValue) =
-                        "Generator (\\w+) starts with (\\d+)".toRegex().find(it)!!.groupValues
-                Generator(name, startValue.toLong())
-            }
+            val generatorA2 = generatorA.filter { it % 4L == 0L }
+            val generatorB2 = generatorB.filter { it % 8L == 0L }
 
-            val gA = generators[0].apply { factor = 16807 }.filter { it % 4L == 0L }
-            val gB = generators[1].apply { factor = 48271 }.filter { it % 8L == 0L }
-
-            result = judge(gA, gB, 5_000_000)
+            result = judge(generatorA2, generatorB2, 5_000_000)
         }
     }
+
 }

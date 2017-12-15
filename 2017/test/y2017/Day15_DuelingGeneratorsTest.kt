@@ -9,23 +9,24 @@ import y2017.Day15_DuelingGenerators.part2
 
 class Day15_DuelingGeneratorsTest {
 
-    val a = Day15_DuelingGenerators.Generator("sample A", 65).apply { factor = 16807 }
-    val b = Day15_DuelingGenerators.Generator("sample A", 8921).apply { factor = 48271 }
+    val testGeneratorA = Day15_DuelingGenerators.Generator(65, 16807)
+    val testGeneratorB = Day15_DuelingGenerators.Generator(8921, 48271)
+
     @Test
     fun `sample A generator values`() {
-        assertThat(a.take(5).toList())
+        assertThat(testGeneratorA.take(5).toList())
                 .isEqualTo(listOf(1092455L, 1181022009L, 245556042L, 1744312007L, 1352636452L))
     }
 
     @Test
     fun `sample B generator values`() {
-        assertThat(b.take(5).toList())
+        assertThat(testGeneratorB.take(5).toList())
                 .isEqualTo(listOf(430625591L, 1233683848L, 1431495498L, 137874439L, 285222916L))
     }
 
     @Test
     fun `judge sample`() {
-        assertThat(judge(a, b, 5)).isEqualTo(1)
+        assertThat(judge(testGeneratorA, testGeneratorB, 5)).isEqualTo(1)
     }
 
     @Ignore("executes too long")
@@ -36,7 +37,7 @@ class Day15_DuelingGeneratorsTest {
 
     @Test
     fun `solve part one simplified`() {
-        assertThat(judge(a, b, 50_000)).isEqualTo(3)
+        assertThat(judge(testGeneratorA, testGeneratorB, 50_000)).isEqualTo(3)
     }
 
     @Ignore("executes too long")
@@ -47,8 +48,11 @@ class Day15_DuelingGeneratorsTest {
 
     @Test
     fun `solve part two simplified`() {
-        assertThat(judge(a.filter { it % 4L == 0L }, b.filter { it % 8L == 0L }, 9_000))
-                .isEqualTo(2)
+
+        val generatorA2 = testGeneratorA.filter { it % 4L == 0L }
+        val generatorB2 = testGeneratorB.filter { it % 8L == 0L }
+
+        assertThat(judge(generatorA2, generatorB2, 9_000)).isEqualTo(2)
     }
 
 }

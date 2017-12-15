@@ -3,14 +3,15 @@ package y2017
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Ignore
 import org.junit.Test
+import y2017.Day15_DuelingGenerators.generator
 import y2017.Day15_DuelingGenerators.judge
 import y2017.Day15_DuelingGenerators.part1
 import y2017.Day15_DuelingGenerators.part2
 
 class Day15_DuelingGeneratorsTest {
 
-    val testGeneratorA = Day15_DuelingGenerators.Generator(65, 16807)
-    val testGeneratorB = Day15_DuelingGenerators.Generator(8921, 48271)
+    private val testGeneratorA = generator(65, 16807)
+    private val testGeneratorB = generator(8921, 48271)
 
     @Test
     fun `sample A generator values`() {

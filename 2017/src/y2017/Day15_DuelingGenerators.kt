@@ -56,34 +56,16 @@ object Day15_DuelingGenerators {
         }
     }
 
-    private val generatorA = Generator(883, 16807)
-    private val generatorB = Generator(879, 48271)
+    fun generator(start: Long, factor: Long) =
+            generateSequence(start) { (it * factor).rem(Int.MAX_VALUE) }
 
-    fun judge(genA: Sequence<Long>, genB: Sequence<Long>, rounds: Int): Int {
-        return (genA zip genB).take(rounds)
-                .filter {
-                    val a = it.first shl 16
-                    val b = it.second shl 16
-                    a.toInt() == b.toInt()
-                }
-                .count()
-    }
+    private val generatorA = generator(883, 16807)
+    private val generatorB = generator(879, 48271)
 
-    class Generator(val start: Long, val factor: Long) : Sequence<Long> {
-
-        override fun iterator(): Iterator<Long> = object : Iterator<Long> {
-            var last = start
-
-            override fun hasNext() = true
-
-            override fun next(): Long {
-                val newValue = (last * factor).rem(Int.MAX_VALUE)
-                last = newValue
-                return newValue
-            }
-        }
-    }
-
+    fun judge(genA: Sequence<Long>, genB: Sequence<Long>, rounds: Int): Int =
+            (genA zip genB).take(rounds)
+                    .filter { (it.first shl 16).toInt() == (it.second shl 16).toInt() }
+                    .count()
 
     //--- Part Two ---
     //

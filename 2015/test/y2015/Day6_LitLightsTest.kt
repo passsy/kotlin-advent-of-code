@@ -8,11 +8,11 @@ import org.junit.Test
 
 class Day6_LitLightsTest {
 
-    // turn on 0,0 through 999,999 would turn on (or leave on) every light
+    // turn on 0,0 through 99,99 would turn on (or leave on) every light
     @Test
     fun `switch lights - all on`() {
-        assertThat(litLights(listOf("turn on 0,0 through 999,999"), 1000))
-                .isEqualTo(1000 * 1000)
+        assertThat(litLights(listOf("turn on 0,0 through 99,99"), 100))
+                .isEqualTo(100 * 100)
     }
 
     // toggle 0,0 through 99,0 would toggle the first line of 100 lights, turning off the ones

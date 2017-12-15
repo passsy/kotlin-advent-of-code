@@ -1,6 +1,7 @@
 package y2017
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.Ignore
 import org.junit.Test
 import y2017.Day10_KnotHash.createInputSequence
 import y2017.Day10_KnotHash.denseHash
@@ -91,6 +92,7 @@ class Day10_KnotHashTest {
         assertThat(knotHash("1,2,4")).isEqualTo("63960835bcdc130f0b66d7ff4f6a5a8e")
     }
 
+    @Ignore("executes too long")
     @Test
     fun `solve part two`() {
         assertThat(part2.test()).isEqualTo("90adb097dd55dea8305c900372258ac6")

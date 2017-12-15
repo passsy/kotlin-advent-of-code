@@ -33,7 +33,9 @@ fun Byte.toSignedInt(): Int {
 }
 
 fun String.toBits(): String {
-    return chunked(2).map { Integer.parseInt(it.toUpperCase(), 16).toByte().toBits() }.joinToString("")
+    return chunked(2)
+            .map { Integer.parseInt(it.toUpperCase(), 16).toByte().toBits() }
+            .joinToString("")
 }
 
 /**

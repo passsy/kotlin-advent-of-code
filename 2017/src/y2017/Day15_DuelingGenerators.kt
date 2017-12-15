@@ -57,7 +57,7 @@ object Day15_DuelingGenerators {
     }
 
     fun generator(start: Long, factor: Long) =
-            generateSequence(start) { (it * factor).rem(Int.MAX_VALUE) }.drop(1)
+            generateSequence(start) { it * factor % Int.MAX_VALUE }.drop(1)
 
     private val generatorA = generator(883, 16807)
     private val generatorB = generator(879, 48271)

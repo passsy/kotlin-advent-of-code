@@ -64,6 +64,7 @@ object Day15_DuelingGenerators {
 
     fun judgeCount(genA: Sequence<Long>, genB: Sequence<Long>, rounds: Int): Int =
             (genA zip genB).take(rounds)
+                    // toChar takes the lowest 16bit
                     .filter { it.first.toChar() == it.second.toChar() }
                     .count()
 

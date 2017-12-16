@@ -62,9 +62,12 @@ object Day15_DuelingGenerators {
     private val generatorA = generator(883, 16807)
     private val generatorB = generator(879, 48271)
 
+
+    private fun Long.lowest16bit() = this and 0xffffL
+
     fun judgeCount(genA: Sequence<Long>, genB: Sequence<Long>, rounds: Int): Int =
             (genA zip genB).take(rounds)
-                    .filter { (it.first shl 16).toInt() == (it.second shl 16).toInt() }
+                    .filter { it.first.lowest16bit() == it.second.lowest16bit() }
                     .count()
 
     //--- Part Two ---

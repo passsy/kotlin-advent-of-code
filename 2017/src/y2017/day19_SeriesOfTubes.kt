@@ -59,10 +59,11 @@ object Day19_SeriesOfTubes {
                 WEST -> pos.north()
             }
 
-            fun moveAndTurn(straightChar: Char,
-                            sideChar: Char,
-                            leftOrientation: Orientation,
-                            rightOrientation: Orientation) {
+            fun moveAndTurn(
+                    straightChar: Char,
+                    sideChar: Char,
+                    leftOrientation: Orientation,
+                    rightOrientation: Orientation) {
                 val next = next()
                 val char = next.char()
                 if (char == straightChar || char == sideChar) {

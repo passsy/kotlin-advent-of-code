@@ -2,11 +2,11 @@ package y2017
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
+import y2017.Day18_Duet.SoloPlayer
 import y2017.Day18_Duet.duet
 import y2017.Day18_Duet.parseInstruction
 import y2017.Day18_Duet.part1
 import y2017.Day18_Duet.part2
-import y2017.Day18_Duet.SoloPlayer
 
 
 class Day18_DuetTest {

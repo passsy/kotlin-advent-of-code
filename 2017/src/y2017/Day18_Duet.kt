@@ -67,7 +67,7 @@ object Day18_Duet {
             get() = mem[this] ?: throw IllegalStateException("requested illegal register $this")
 
         // execute basic calculations on [mem]
-        protected fun calculate(instr: Instr) = when(instr) {
+        protected fun calculate(instr: Instr) = when (instr) {
             is Set -> mem[instr.register] = instr.arg1.value
             is Add -> mem[instr.register] = instr.register.value + instr.arg1.value
             is Multiply -> mem[instr.register] = instr.register.value * instr.arg1.value

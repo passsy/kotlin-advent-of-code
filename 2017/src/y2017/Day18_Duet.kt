@@ -58,7 +58,7 @@ object Day18_Duet {
 
     abstract class Player {
 
-        protected val mem = hashMapOf(*('a'..'z').map { it.toString() to 0L }.toTypedArray())
+        protected val mem = ('a'..'z').associate { it.toString() to 0L }.toMutableMap()
 
         protected val ValueOrRegister.value: Long
             get() = intValue?.toLong() ?: register!!.value

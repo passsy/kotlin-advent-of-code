@@ -16,8 +16,7 @@ class Day20_ParticleSwarmTest {
     @Test
     fun `parse particle`() {
         val parsed = toParticle(0, "p=<-671,1794,-1062>, v=<46,87,41>, a=<-1,-17,1>")
-        val particle = Particle(0, Vector(-671, 1794, -1062), Vector(46, 87, 41),
-                Vector(-1, -17, 1))
+        val particle = Particle(0, Vector(-671, 1794, -1062), Vector(46, 87, 41), Vector(-1, -17, 1))
         assertThat(parsed).isEqualTo(particle)
     }
 

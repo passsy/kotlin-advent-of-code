@@ -1,8 +1,8 @@
 package y2017
 
 import com.pascalwelsch.aoc.challenge
-import y2017.Day18_Duet.Instr.*
-import y2017.Day18_Duet.Instr.Set
+import y2017.Day18_Duet.Instruction.*
+import y2017.Day18_Duet.Instruction.Set
 import y2017.Day18_Duet.part1
 import y2017.Day18_Duet.part2
 import java.util.*
@@ -24,11 +24,10 @@ object Day18_Duet {
         }
     }
 
-    class SoloPlayer(private val instructions: List<Instr>) : Player() {
+    class SoloPlayer(private val instructions: List<Instruction>) : Player() {
         var sounds = Stack<Int>()
 
         fun play() {
-
             var next = 0
 
             loop@ while (next >= 0 && next < instructions.size) {
@@ -60,14 +59,12 @@ object Day18_Duet {
 
         protected val mem = ('a'..'z').associate { it.toString() to 0L }.toMutableMap()
 
-        protected val ValueOrRegister.value: Long
-            get() = intValue?.toLong() ?: register!!.value
+        protected val ValueOrRegister.value: Long get() = intValue?.toLong() ?: register!!.value
 
-        protected val String.value: Long
-            get() = mem[this] ?: throw IllegalStateException("requested illegal register $this")
+        protected val String.value: Long get() = mem[this] ?: throw IllegalStateException("requested illegal register $this")
 
         // execute basic calculations on [mem]
-        protected fun calculate(instr: Instr) = when (instr) {
+        protected fun calculate(instr: Instruction) = when (instr) {
             is Set -> mem[instr.register] = instr.arg1.value
             is Add -> mem[instr.register] = instr.register.value + instr.arg1.value
             is Multiply -> mem[instr.register] = instr.register.value * instr.arg1.value
@@ -76,9 +73,8 @@ object Day18_Duet {
         }
     }
 
-    fun parseInstruction(input: String): Instr {
-        val (_, op, arg1, arg2) =
-                "(\\w{3}) (\\w+) ?(\\S+)*".toRegex().find(input)!!.groupValues
+    fun parseInstruction(input: String): Instruction {
+        val (_, op, arg1, arg2) = "(\\w{3}) (\\w+) ?(\\S+)*".toRegex().find(input)!!.groupValues
 
         return when (op) {
             "snd" -> Snd(ValueOrRegister(arg1))
@@ -107,14 +103,14 @@ object Day18_Duet {
         override fun toString(): String = rawString
     }
 
-    sealed class Instr {
-        data class Snd(val register: ValueOrRegister) : Instr()
-        data class Set(val register: String, val arg1: ValueOrRegister) : Instr()
-        data class Add(val register: String, val arg1: ValueOrRegister) : Instr()
-        data class Multiply(val register: String, val arg1: ValueOrRegister) : Instr()
-        data class Mod(val register: String, val arg1: ValueOrRegister) : Instr()
-        data class RecoverNotZero(val register: String) : Instr()
-        data class JumpGreaterZero(val arg0: ValueOrRegister, val arg1: ValueOrRegister) : Instr()
+    sealed class Instruction {
+        data class Snd(val register: ValueOrRegister) : Instruction()
+        data class Set(val register: String, val arg1: ValueOrRegister) : Instruction()
+        data class Add(val register: String, val arg1: ValueOrRegister) : Instruction()
+        data class Multiply(val register: String, val arg1: ValueOrRegister) : Instruction()
+        data class Mod(val register: String, val arg1: ValueOrRegister) : Instruction()
+        data class RecoverNotZero(val register: String) : Instruction()
+        data class JumpGreaterZero(val arg0: ValueOrRegister, val arg1: ValueOrRegister) : Instruction()
     }
 
 
@@ -126,7 +122,7 @@ object Day18_Duet {
         }
     }
 
-    fun duet(instructions: List<Instr>): Int {
+    fun duet(instructions: List<Instruction>): Int {
         val players = hashMapOf<Long, SyncedPlayer>()
 
         fun notify(senderId: Long, value: Long) {
@@ -149,10 +145,9 @@ object Day18_Duet {
         return players[1]!!.valuesSent
     }
 
-    class SyncedPlayer(
-            val id: Long,
-            private val instructions: List<Instr>,
-            private val notify: (senderId: Long, value: Long) -> Unit
+    class SyncedPlayer(val id: Long,
+                       private val instructions: List<Instruction>,
+                       private val notify: (senderId: Long, value: Long) -> Unit
     ) : Player() {
 
         val queue = LinkedBlockingDeque<Long>()

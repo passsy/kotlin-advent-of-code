@@ -33,7 +33,7 @@ object Day08_Registers {
         inputFile("2017/8.txt")
 
         solveMultiLine {
-            val instructions = it.map { parseInstruction(it) }
+            val instructions = it.map(::parseInstruction)
             val r = Register()
             instructions.forEach { r.execute(it) }
             result = r.largestRegister()
@@ -46,21 +46,18 @@ object Day08_Registers {
         private fun registerValue(register: String) = r[register] ?: 0
 
         fun execute(inst: Instruction) {
-
             if (inst.condition.verify(::registerValue)) {
                 val register = inst.operation.register
                 r[register] = inst.operation.execute(registerValue(register))
             }
         }
 
-        fun largestRegister(): Int {
-            return r.values.max() ?: 0
-        }
+        fun largestRegister(): Int = r.values.max() ?: 0
     }
 
+    private val inputRegex = "(\\w+)\\s(\\w+)\\s(-*\\d+)\\sif\\s(\\w+)\\s(.*)\\s(-*\\d+)".toRegex()
     fun parseInstruction(input: String): Instruction {
-        val values = "(\\w+)\\s(\\w+)\\s(-*\\d+)\\sif\\s(\\w+)\\s(.*)\\s(-*\\d+)"
-                .toRegex().find(input)!!.groupValues
+        val values = inputRegex.find(input)!!.groupValues
 
         val op: Operator = when (values[2]) {
             "inc" -> Operator.INC
@@ -85,19 +82,12 @@ object Day08_Registers {
     }
 
     data class Instruction(val condition: Condition, val operation: Operation)
-    data class Operation(
-            val register: String,
-            private val operator: Operator,
-            private val value: Int) {
+    data class Operation(val register: String, private val operator: Operator, private val value: Int) {
         fun execute(registerValue: Int) = operator.execute(registerValue, value)
     }
 
-    data class Condition(
-            private val register: String,
-            private val verification: Verification,
-            private val value: Int) {
-        fun verify(registerValue: (register: String) -> Int) =
-                verification.verify(registerValue(register), value)
+    data class Condition(private val register: String, private val verification: Verification, private val value: Int) {
+        fun verify(registerValue: (register: String) -> Int) = verification.verify(registerValue(register), value)
     }
 
     enum class Operator(val execute: (Int, Int) -> Int) {
@@ -123,7 +113,7 @@ object Day08_Registers {
         inputFile("2017/8.txt")
 
         solveMultiLine {
-            val instructions = it.map { parseInstruction(it) }
+            val instructions = it.map(::parseInstruction)
             val r = Register()
             var largestValue = 0
             instructions.forEach {

@@ -77,8 +77,7 @@ object Day10_KnotHash {
         val overhang = (start + length) % size
 
         val reversed = doubled.subList(start, start + length).asReversed()
-        val unwrapped = doubled.subList(0, start) + reversed + doubled.subList(start + length,
-                doubled.size)
+        val unwrapped = doubled.subList(0, start) + reversed + doubled.subList(start + length, doubled.size)
 
         if (start + length > size) {
             val begin = unwrapped.subList(size, size + overhang)
@@ -119,16 +118,13 @@ object Day10_KnotHash {
 
         solve {
             result = knotHash(it)
-            //af18de8647191999e724f526314faee wrong
         }
     }
 
     fun knotHash(input: String): String {
         val input = createInputSequence(input)
         val sparseHash = knotHashSequence(input)
-        return denseHash(sparseHash)
-                .joinToString("") { it.toByte().toHex(prefix = "") }
-                .toLowerCase()
+        return denseHash(sparseHash).joinToString("") { it.toByte().toHex(prefix = "") }.toLowerCase()
     }
 
     fun denseHash(sparseHash: List<Int>): List<Int> {

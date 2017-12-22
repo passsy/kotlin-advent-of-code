@@ -43,9 +43,7 @@ object Day16_PermutationPromenade {
     }
 
 
-    fun dance(commands: List<Command>,
-              rounds: Int = 1,
-              initialOrder: List<String> = initialProgramOrder): List<String> {
+    fun dance(commands: List<Command>, rounds: Int = 1, initialOrder: List<String> = initialProgramOrder): List<String> {
         val steps = Stack<List<String>>()
 
         var items = initialOrder.toMutableList()
@@ -85,8 +83,7 @@ object Day16_PermutationPromenade {
         return items.toList()
     }
 
-    private val initialProgramOrder =
-            listOf("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p")
+    private val initialProgramOrder = listOf("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p")
 
     val part2 = challenge("Day 16 - Part Two") {
         inputFile("2017/16.txt")

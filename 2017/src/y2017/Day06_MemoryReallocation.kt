@@ -39,10 +39,7 @@ object Day06_MemoryReallocation {
         }
     }
 
-    fun stepsUntilRecursion(input: List<Int>): Int {
-        val stack = recursiveStack(input)
-        return stack.size - 1
-    }
+    fun stepsUntilRecursion(input: List<Int>): Int = recursiveStack(input).size - 1
 
     private fun recursiveStack(input: List<Int>): Stack<List<Int>> {
         val stack = Stack<List<Int>>()

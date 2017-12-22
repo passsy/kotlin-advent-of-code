@@ -46,9 +46,8 @@ object Day11_HexEd {
         }
     }
 
-    fun followDirections(directions: List<HexDirection>, origin: HexPosition): HexPosition {
-        return directions.fold(origin, { position, direction -> position + direction })
-    }
+    fun followDirections(directions: List<HexDirection>, origin: HexPosition): HexPosition =
+            directions.fold(origin, { position, direction -> position + direction })
 
     data class HexPosition(val x: Int, val y: Int) {
         fun distance(to: HexPosition): Int {

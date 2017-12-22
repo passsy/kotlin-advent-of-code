@@ -76,7 +76,5 @@ object Day05_TwistyTrampolinesMaze {
         }
     }
 
-    fun stepCount2(instructions: List<Int>) =
-            stepCount(instructions,
-                    { offset -> if (offset >= 3) offset - 1 else offset + 1 })
+    fun stepCount2(instructions: List<Int>) = stepCount(instructions, { offset -> if (offset >= 3) offset - 1 else offset + 1 })
 }

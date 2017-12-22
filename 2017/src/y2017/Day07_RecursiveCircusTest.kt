@@ -123,9 +123,7 @@ object Day07_RecursiveCircus {
 
 
     fun correctErrorForBalancedTree(infos: List<Node>, root: Node = findRootNode(infos)): Int? {
-        fun Node.children(): List<Node> {
-            return childNames.mapNotNull { childName -> infos.firstOrNull { it != this && it.name == childName } }
-        }
+        fun Node.children(): List<Node> = childNames.mapNotNull { childName -> infos.firstOrNull { it != this && it.name == childName } }
 
         fun Node.combinedWeight(): Int {
             val c = children()

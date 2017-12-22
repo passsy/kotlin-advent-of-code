@@ -33,12 +33,9 @@ object Day02_CorruptionChecksum {
         }
     }
 
-    fun parseInputTable(input: List<String>): List<List<Int>> =
-            input.map { it.split('\t').map(String::toInt) }
+    fun parseInputTable(input: List<String>): List<List<Int>> = input.map { it.split('\t').map(String::toInt) }
 
-    fun checksum(lines: List<List<Int>>): Int = lines.map {
-        minMaxDiff(it)
-    }.sum()
+    fun checksum(lines: List<List<Int>>): Int = lines.map { minMaxDiff(it) }.sum()
 
     fun minMaxDiff(list: List<Int>): Int = list.max()!! - list.min()!!
 
@@ -70,11 +67,7 @@ object Day02_CorruptionChecksum {
     }
 
 
-    fun evenlyDivisibleChecksum(lines: List<List<Int>>): Int {
-        return lines.map { evenDivisionPair(it) }
-                .map { it.first / it.second }
-                .sum()
-    }
+    fun evenlyDivisibleChecksum(lines: List<List<Int>>): Int = lines.map { evenDivisionPair(it) }.map { it.first / it.second }.sum()
 
     fun evenDivisionPair(line: List<Int>): Pair<Int, Int> {
         // assuming there is always exact one matching pair

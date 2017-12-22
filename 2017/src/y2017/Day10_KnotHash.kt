@@ -122,8 +122,8 @@ object Day10_KnotHash {
     }
 
     fun knotHash(input: String): String {
-        val input = createInputSequence(input)
-        val sparseHash = knotHashSequence(input)
+        val parsed = createInputSequence(input)
+        val sparseHash = knotHashSequence(parsed)
         return denseHash(sparseHash).joinToString("") { it.toByte().toHex(prefix = "") }.toLowerCase()
     }
 

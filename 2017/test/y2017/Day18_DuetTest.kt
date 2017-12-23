@@ -26,7 +26,7 @@ class Day18_DuetTest {
                 parseInstruction("set a 1"),
                 parseInstruction("jgz a -2")
         )
-        val sound = SoloPlayer(instructions).apply { play() }.sounds.peek()
+        val sound = SoloPlayer(instructions).apply { run() }.sounds.peek()
 
         assertThat(sound).isEqualTo(4)
     }

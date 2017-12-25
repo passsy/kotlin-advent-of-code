@@ -43,8 +43,7 @@ object Day23_CoprocessorConflagration {
 
     val part2 = challenge("Day 23 - Part 2") {
         solveMultiLine {
-            result = solvePart2(true)
-            //1001 too high
+            result = solvePart2(false)
         }
     }
 
@@ -52,10 +51,9 @@ object Day23_CoprocessorConflagration {
         var a = if (debug) 1 else 0
         var b = 81 //1
         var c = b  //2
-        var d = 0
-        var e = 0
-        var f = 0
-        var g = 0
+        var d: Int
+        var f: Int
+        var g: Int
         var h = 0
         if (a == 0) {
             b *= 100 //5
@@ -66,23 +64,13 @@ object Day23_CoprocessorConflagration {
         do { //32
             f = 1 //9
             d = 2 //10
-            do {
-                e = 2 //11
-                do {
-                    g = d //12
-                    g *= e //13
-                    g -= b //14
-                    if (g == 0) { //15
-                        f = 0 //16
-                    }
-                    e -= -1//17
-                    g = e //18
-                    g -= b //19
-                } while (g != 0) //20
-                d -= -1 //21
-                g = d //22
-                g -= b //23
-            } while (g != 0) //24
+            while (d < b) {
+                if (b % d == 0) {
+                    f = 0 /// 16
+                    break
+                }
+                d += 1 //21
+            }
             if (f == 0) { //25
                 h -= -1 //26
             }

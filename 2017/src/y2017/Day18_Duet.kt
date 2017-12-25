@@ -27,21 +27,15 @@ object Day18_Duet {
     class SoloPlayer(instructions: List<Instruction>) : Processor(instructions) {
         var sounds = Stack<Int>()
 
-        override fun execute(instr: Instruction): Boolean {
-            when (instr) {
-                is Snd -> sounds.push(instr.register.value.toInt())
-                is JumpGreaterZero -> {
-                    if (instr.arg0.value > 0) {
-                        next += instr.arg1.value.toInt() - 1
-                    }
-                    return false
-                }
+        override fun execute(instruction: Instruction): Boolean {
+            when (instruction) {
+                is Snd -> sounds.push(instruction.register.value.toInt())
                 is RecoverNotZero -> {
-                    if (instr.register.value != 0L) {
+                    if (instruction.register.value != 0L) {
                         return true
                     }
                 }
-                else -> return super.execute(instr)
+                else -> return super.execute(instruction)
             }
 
             return false
@@ -52,7 +46,7 @@ object Day18_Duet {
             private val instructions: List<Instruction>,
             registersNames: CharRange = 'a'..'z') {
 
-        protected val mem = registersNames.associate { it.toString() to 0L }.toMutableMap()
+        val mem = registersNames.associate { it.toString() to 0L }.toMutableMap()
 
         protected val ValueOrRegister.value: Long get() = intValue?.toLong() ?: register!!.value
 
@@ -60,14 +54,26 @@ object Day18_Duet {
 
         // execute basic calculations on [mem]
         // returns true if the loop should break
-        open protected fun execute(instr: Instruction): Boolean {
-            when (instr) {
-                is Set -> mem[instr.register] = instr.arg1.value
-                is Add -> mem[instr.register] = instr.register.value + instr.arg1.value
-                is Sub -> mem[instr.register] = instr.register.value - instr.arg1.value
-                is Multiply -> mem[instr.register] = instr.register.value * instr.arg1.value
-                is Mod -> mem[instr.register] = instr.register.value % instr.arg1.value
-                else -> throw IllegalArgumentException("can't handle $instr")
+        open protected fun execute(instruction: Instruction): Boolean {
+            when (instruction) {
+                is Set -> mem[instruction.register] = instruction.arg1.value
+                is Add -> mem[instruction.register] = instruction.register.value + instruction.arg1.value
+                is Sub -> mem[instruction.register] = instruction.register.value - instruction.arg1.value
+                is Multiply -> mem[instruction.register] = instruction.register.value * instruction.arg1.value
+                is Mod -> mem[instruction.register] = instruction.register.value % instruction.arg1.value
+                is JumpGreaterZero -> {
+                    if (instruction.arg0.value > 0) {
+                        next += instruction.arg1.value.toInt() - 1
+                    }
+                    return false
+                }
+                is JumpNotZero -> {
+                    if (instruction.arg0.value != 0L) {
+                        next += instruction.arg1.value.toInt() - 1
+                    }
+                    return false
+                }
+                else -> throw IllegalArgumentException("can't handle $instruction")
             }
 
             return false
@@ -100,13 +106,13 @@ object Day18_Duet {
             "snd" -> Snd(ValueOrRegister(arg1))
             "set" -> Set(arg1, ValueOrRegister(arg2))
             "add" -> Add(arg1, ValueOrRegister(arg2))
-            "sum" -> Sub(arg1, ValueOrRegister(arg2))
+            "sub" -> Sub(arg1, ValueOrRegister(arg2))
             "mul" -> Multiply(arg1, ValueOrRegister(arg2))
             "mod" -> Mod(arg1, ValueOrRegister(arg2))
             "rcv" -> RecoverNotZero(arg1)
             "jgz" -> JumpGreaterZero(ValueOrRegister(arg1), ValueOrRegister(arg2))
             "jnz" -> JumpNotZero(ValueOrRegister(arg1), ValueOrRegister(arg2))
-            else -> throw IllegalArgumentException("Unknown instruction $op")
+            else -> throw IllegalArgumentException("Unknown instruction '$op'")
         }
     }
 
@@ -198,14 +204,6 @@ object Day18_Duet {
                     valuesSent++
                     val value = instruction.register.value
                     notify(id, value)
-                }
-                is JumpGreaterZero -> {
-                    if (instruction.arg0.value > 0) {
-                        next += instruction.arg1.value.toInt()
-                    } else {
-                        next++
-                    }
-                    return true
                 }
                 is RecoverNotZero -> {
                     val element = queue.poll()

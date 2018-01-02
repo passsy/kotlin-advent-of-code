@@ -56,10 +56,8 @@ object Day07_RecursiveCircus {
     //
     //Before you're ready to help them, you need to make sure your information is correct. What is the name of the bottom program?
     val part1 = challenge("Day 7 - Part One") {
-        inputFile("2017/7.txt")
-
-        solveMultiLine {
-            val infos = it.map { parseInfo(it) }
+        solve {
+            val infos = inputFile("2017/7.txt").lines().map { parseInfo(it) }
             result = findRootNode(infos).name
         }
     }
@@ -112,10 +110,8 @@ object Day07_RecursiveCircus {
     //
     //Given that exactly one program is the wrong weight, what would its weight need to be to balance the entire tower?
     val part2 = challenge("Day 7 - Part Two") {
-        inputFile("2017/7.txt")
-
-        solveMultiLine {
-            val infos = it.map { parseInfo(it) }
+        solve {
+            val infos = inputFile("2017/7.txt").lines().map { parseInfo(it) }
             result = correctErrorForBalancedTree(infos) ?: throw Exception(
                     "tree is already balanced")
         }

@@ -58,7 +58,7 @@ object Day07_RecursiveCircus {
     val part1 = challenge("Day 7 - Part One") {
         solve {
             val infos = inputFile("2017/7.txt").lines().map { parseInfo(it) }
-            result = findRootNode(infos).name
+            result = findRootNode(infos).name //17537
         }
     }
 
@@ -112,8 +112,7 @@ object Day07_RecursiveCircus {
     val part2 = challenge("Day 7 - Part Two") {
         solve {
             val infos = inputFile("2017/7.txt").lines().map { parseInfo(it) }
-            result = correctErrorForBalancedTree(infos) ?: throw Exception(
-                    "tree is already balanced")
+            result = correctErrorForBalancedTree(infos) ?: throw Exception("tree is already balanced") //7539
         }
     }
 

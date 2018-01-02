@@ -34,7 +34,7 @@ object Day08_Registers {
             val instructions = inputFile("2017/8.txt").lines().map(::parseInstruction)
             val r = Register()
             instructions.forEach { r.execute(it) }
-            result = r.largestRegister()
+            result = r.largestRegister() //2971
         }
     }
 
@@ -116,7 +116,7 @@ object Day08_Registers {
                 r.execute(it)
                 largestValue = Math.max(r.largestRegister(), largestValue)
             }
-            result = largestValue
+            result = largestValue //4254
         }
     }
 }

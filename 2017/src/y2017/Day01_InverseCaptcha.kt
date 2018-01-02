@@ -32,7 +32,7 @@ object Day01_InverseCaptcha {
     //What is the solution to your captcha?
     val part1 = challenge("Day 1 - Part One") {
         solve {
-            result = captcha1(inputFile("2017/1.txt"))
+            result = captcha1(inputFile("2017/1.txt")) //1086
         }
     }
 
@@ -64,7 +64,7 @@ object Day01_InverseCaptcha {
     //What is the solution to your new captcha?
     val part2 = challenge("Day 1 - Part Two") {
         solve {
-            result = captcha2(inputFile("2017/1.txt"))
+            result = captcha2(inputFile("2017/1.txt")) //amgozmfv
         }
     }
 

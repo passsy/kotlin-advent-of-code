@@ -49,7 +49,7 @@ object Day10_KnotHash {
         solve {
             val lengths = "183,0,31,146,254,240,223,150,2,206,161,1,255,232,199,88".split(',').map { it.toInt() }
             val sparseHash = knotHashSequence(lengths, rounds = 1)
-            result = sparseHash[0] * sparseHash[1]
+            result = sparseHash[0] * sparseHash[1] //15990
         }
     }
 
@@ -113,7 +113,7 @@ object Day10_KnotHash {
     //Treating your puzzle input as a string of ASCII characters, what is the Knot Hash of your puzzle input? Ignore any leading or trailing whitespace you might encounter.
     val part2 = challenge("Day 10 - Part One") {
         solve {
-            result = knotHash("183,0,31,146,254,240,223,150,2,206,161,1,255,232,199,88")
+            result = knotHash("183,0,31,146,254,240,223,150,2,206,161,1,255,232,199,88") //90adb097dd55dea8305c900372258ac6
         }
     }
 

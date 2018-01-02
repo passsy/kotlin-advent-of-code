@@ -47,7 +47,7 @@ object Day12_DigitalPlumber {
     val part1 = challenge("Day 12 - Part One") {
         solve {
             val map = buildMap(inputFile("2017/12.txt").lines().map { parseRelation(it) })
-            result = connectedProgramCount(0, map)
+            result = connectedProgramCount(0, map) //283
         }
     }
 
@@ -91,7 +91,7 @@ object Day12_DigitalPlumber {
     val part2 = challenge("Day 12 - Part Two") {
         solve {
             val map = buildMap(inputFile("2017/12.txt").lines().map { parseRelation(it) })
-            result = groupCount(map)
+            result = groupCount(map) //195
         }
     }
 

@@ -41,7 +41,7 @@ object Day11_HexEd {
             val directions = inputFile("2017/11.txt").split(',').map { HexDirection.from(it) }
             val origin = HexPosition(0, 0)
             val position = followDirections(directions, origin)
-            result = position.distance(origin)
+            result = position.distance(origin) //796
         }
     }
 
@@ -89,7 +89,7 @@ object Day11_HexEd {
         solve {
             val directions = inputFile("2017/11.txt").split(',').map { HexDirection.from(it) }
             val origin = HexPosition(0, 0)
-            result = furthestDistance(directions, origin)
+            result = furthestDistance(directions, origin) //1585
         }
     }
 

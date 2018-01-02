@@ -58,7 +58,7 @@ object Day09_StreamProcessing {
     //        The first half of this puzzle is complete! It provides one gold star: *
     val part1 = challenge("Day 9 - Part One") {
         solve {
-            result = parse(inputFile("2017/9.txt")).groupScore
+            result = parse(inputFile("2017/9.txt")).groupScore //17537
         }
     }
 
@@ -137,7 +137,7 @@ object Day09_StreamProcessing {
     //    How many non-canceled characters are within the garbage in your puzzle input?
     val part2 = challenge("Day 9 - Part Two") {
         solve {
-            result = parse(inputFile("2017/9.txt")).garbageCount
+            result = parse(inputFile("2017/9.txt")).garbageCount //7539
         }
     }
 }

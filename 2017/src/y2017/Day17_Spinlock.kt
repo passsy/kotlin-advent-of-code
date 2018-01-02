@@ -44,7 +44,7 @@ object Day17_Spinlock {
     //What is the value after 2017 in your completed circular buffer?
     val part1 = challenge("Day 17 - Part One") {
         solve {
-            result = shortCircuitSpinLock(303, 2017, 2017)
+            result = shortCircuitSpinLock(303, 2017, 2017) //1971
         }
     }
 
@@ -75,7 +75,7 @@ object Day17_Spinlock {
     //What is the value after 0 the moment 50000000 is inserted?
     val part2 = challenge("Day 17 - Part Two") {
         solve {
-            result = shortCircuitSpinLock(303, 50_000_000, 0)
+            result = shortCircuitSpinLock(303, 50_000_000, 0) //17202899
         }
     }
 }

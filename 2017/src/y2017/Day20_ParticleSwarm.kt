@@ -45,7 +45,7 @@ object Day20_ParticleSwarm {
     val part1 = challenge("Day 20 - Part One") {
         solve {
             val particles = inputFile("2017/20.txt").lines().mapIndexed(::toParticle)
-            result = closesParticleLongTerm(particles).id
+            result = closesParticleLongTerm(particles).id //144
         }
     }
 
@@ -103,7 +103,7 @@ object Day20_ParticleSwarm {
     val part2 = challenge("Day 20 - Part Two") {
         solve {
             val particles = inputFile("2017/20.txt").lines().mapIndexed(::toParticle)
-            result = leftoversAfterCollisions(particles).count()
+            result = leftoversAfterCollisions(particles).count() //477
         }
     }
 

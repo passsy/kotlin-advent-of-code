@@ -117,12 +117,12 @@ class Day21_FractalArtTest {
 
     @Test
     fun `solve part 1`() {
-        assertThat(part1.test()).isEqualTo(110)
+        assertThat(part1.test()).isEqualTo("110")
     }
 
     @Ignore("too large")
     @Test
     fun `solve part 2`() {
-        assertThat(part2.test()).isEqualTo(1277716)
+        assertThat(part2.test()).isEqualTo("1277716")
     }
 }

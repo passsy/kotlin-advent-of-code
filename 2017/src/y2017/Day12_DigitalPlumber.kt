@@ -45,10 +45,8 @@ object Day12_DigitalPlumber {
     //
     //How many programs are in the group that contains program ID 0?
     val part1 = challenge("Day 12 - Part One") {
-        inputFile("2017/12.txt")
-
-        solveMultiLine {
-            val map = buildMap(it.map { parseRelation(it) })
+        solve {
+            val map = buildMap(inputFile("2017/12.txt").lines().map { parseRelation(it) })
             result = connectedProgramCount(0, map)
         }
     }
@@ -91,10 +89,8 @@ object Day12_DigitalPlumber {
     //
     //How many groups are there in total?
     val part2 = challenge("Day 12 - Part Two") {
-        inputFile("2017/12.txt")
-
-        solveMultiLine {
-            val map = buildMap(it.map { parseRelation(it) })
+        solve {
+            val map = buildMap(inputFile("2017/12.txt").lines().map { parseRelation(it) })
             result = groupCount(map)
         }
     }

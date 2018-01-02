@@ -15,9 +15,8 @@ fun main(args: Array<String>) {
 object Day22_SporificaVirus {
 
     val part1 = challenge("Day 22 - Part One") {
-        inputFile("2017/22.txt")
-        solveMultiLine {
-            result = moveSimple(10_000, it.map { it.toList() })
+        solve {
+            result = moveSimple(10_000, inputFile("2017/22.txt").lines().map { it.toList() })
         }
     }
 
@@ -141,9 +140,8 @@ object Day22_SporificaVirus {
     }
 
     val part2 = challenge("Day 22 - Part Two") {
-        inputFile("2017/22.txt")
-        solveMultiLine {
-            result = moveAdvanced(10_000_000, it.map { it.toList() })
+        solve {
+            result = moveAdvanced(10_000_000, inputFile("2017/22.txt").lines().map { it.toList() })
         }
     }
 

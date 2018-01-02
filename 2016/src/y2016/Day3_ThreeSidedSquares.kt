@@ -24,10 +24,9 @@ object Day3_ThreeSidedSquares {
     //
     //In your puzzle input, how many of the listed triangles are possible?
     val part1 = challenge("Day 3 - Part One") {
-        inputFile("2016/3.txt")
-
-        solveMultiLine {
-            result = it.map { Triangle.parse(it) }
+        solve {
+            result = inputFile("2016/3.txt").lines()
+                    .map { Triangle.parse(it) }
                     .filter { it.isPossible() }
                     .count()
         }
@@ -60,9 +59,8 @@ object Day3_ThreeSidedSquares {
     //203 403 603
     //In your puzzle input, and instead reading by columns, how many of the listed triangles are possible?
     val part2 = challenge("Day 3 - Part Two") {
-        inputFile("2016/3.txt")
         solve {
-            result = it.lines()
+            result = inputFile("2016/3.txt").lines()
                     .map { Triangle.parse(it) }
                     .verticalTriangles()
                     .filter { it.isPossible() }

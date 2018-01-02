@@ -32,9 +32,8 @@ object Day06_MemoryReallocation {
     //
     //Given the initial block counts in your puzzle input, how many redistribution cycles must be completed before a configuration is produced that has been seen before?
     val part1 = challenge("Day 6 - Part One") {
-        inputText("4\t10\t4\t1\t8\t4\t9\t14\t5\t1\t14\t15\t0\t15\t3\t5")
         solve {
-            val banks = it.split('\t').map { it.toInt() }
+            val banks = "4\t10\t4\t1\t8\t4\t9\t14\t5\t1\t14\t15\t0\t15\t3\t5".split('\t').map { it.toInt() }
             result = stepsUntilRecursion(banks) //12841
         }
     }
@@ -81,9 +80,8 @@ object Day06_MemoryReallocation {
     //
     //How many cycles are in the infinite loop that arises from the configuration in your puzzle input?
     val part2 = challenge("Day 6 - Part Two") {
-        inputText("4\t10\t4\t1\t8\t4\t9\t14\t5\t1\t14\t15\t0\t15\t3\t5")
         solve {
-            val banks = it.split('\t').map { it.toInt() }
+            val banks = "4\t10\t4\t1\t8\t4\t9\t14\t5\t1\t14\t15\t0\t15\t3\t5".split('\t').map { it.toInt() }
             result = recursionLoopSize(banks) //8038
         }
     }

@@ -36,9 +36,8 @@ object Day05_TwistyTrampolinesMaze {
     //
     //How many steps does it take to reach the exit?
     val part1 = challenge("Day 5 - Part One") {
-        inputFile("2017/5.txt")
-        solveMultiLine {
-            result = stepCount(it.map { it.toInt() }) //364539
+        solve {
+            result = stepCount(inputFile("2017/5.txt").lines().map { it.toInt() }) //364539
         }
     }
 
@@ -70,9 +69,8 @@ object Day05_TwistyTrampolinesMaze {
     //
     //How many steps does it now take to reach the exit?
     val part2 = challenge("Day 5 - Part Two") {
-        inputFile("2017/5.txt")
-        solveMultiLine {
-            result = stepCount2(it.map { it.toInt() }) //27477714
+        solve {
+            result = stepCount2(inputFile("2017/5.txt").lines().map { it.toInt() }) //27477714
         }
     }
 

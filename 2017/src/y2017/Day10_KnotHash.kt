@@ -46,10 +46,8 @@ object Day10_KnotHash {
     //
     //However, you should instead use the standard list size of 256 (with values 0 to 255) and the sequence of lengths in your puzzle input. Once this process is complete, what is the result of multiplying the first two numbers in the list?
     val part1 = challenge("Day 10 - Part One") {
-        inputText("183,0,31,146,254,240,223,150,2,206,161,1,255,232,199,88")
-
         solve {
-            val lengths = it.split(',').map { it.toInt() }
+            val lengths = "183,0,31,146,254,240,223,150,2,206,161,1,255,232,199,88".split(',').map { it.toInt() }
             val sparseHash = knotHashSequence(lengths, rounds = 1)
             result = sparseHash[0] * sparseHash[1]
         }
@@ -114,10 +112,8 @@ object Day10_KnotHash {
     //1,2,4 becomes 63960835bcdc130f0b66d7ff4f6a5a8e.
     //Treating your puzzle input as a string of ASCII characters, what is the Knot Hash of your puzzle input? Ignore any leading or trailing whitespace you might encounter.
     val part2 = challenge("Day 10 - Part One") {
-        inputText("183,0,31,146,254,240,223,150,2,206,161,1,255,232,199,88")
-
         solve {
-            result = knotHash(it)
+            result = knotHash("183,0,31,146,254,240,223,150,2,206,161,1,255,232,199,88")
         }
     }
 

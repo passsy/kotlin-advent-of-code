@@ -14,14 +14,13 @@ typealias Bridge = List<Component>
 
 object Day24_ElectromagneticMoat {
     val part1 = challenge("Day 24 - Part One") {
-        inputFile("2017/24.txt")
-        solveMultiLine {
-            val components = it.map { parseComponent(it) }.toSet()
-            result = buildBridges(components).maxBy { it.strenth() }!!.strenth()
+        solve {
+            val components = inputFile("2017/24.txt").lines().map { parseComponent(it) }.toSet()
+            result = buildBridges(components).maxBy { it.strength() }!!.strength()
         }
     }
 
-    fun Bridge.strenth() = sumBy { it.strength() }
+    fun Bridge.strength() = sumBy { it.strength() }
 
     private fun parseComponent(input: String): Component {
         val (n, s) = input.split("/")
@@ -65,10 +64,9 @@ object Day24_ElectromagneticMoat {
 
 
     val part2 = challenge("Day 24 - Part Two") {
-        inputFile("2017/24.txt")
-        solveMultiLine {
-            val components = it.map { parseComponent(it) }.toSet()
-            result = buildBridges(components).maxBy { it.size }!!.strenth()
+        solve {
+            val components = inputFile("2017/24.txt").lines().map { parseComponent(it) }.toSet()
+            result = buildBridges(components).maxBy { it.size }!!.strength()
         }
     }
 }

@@ -31,9 +31,8 @@ object Day01_InverseCaptcha {
     //        91212129 produces 9 because the only digit that matches the next one is the last digit, 9.
     //What is the solution to your captcha?
     val part1 = challenge("Day 1 - Part One") {
-        inputFile("2017/1.txt")
         solve {
-            result = captcha1(it)
+            result = captcha1(inputFile("2017/1.txt"))
         }
     }
 
@@ -64,9 +63,8 @@ object Day01_InverseCaptcha {
     //12131415 produces 4.
     //What is the solution to your new captcha?
     val part2 = challenge("Day 1 - Part Two") {
-        inputFile("2017/1.txt")
         solve {
-            result = captcha2(it)
+            result = captcha2(inputFile("2017/1.txt"))
         }
     }
 

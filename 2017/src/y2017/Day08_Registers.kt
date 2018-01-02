@@ -30,10 +30,8 @@ object Day08_Registers {
     //
     //What is the largest value in any register after completing the instructions in your puzzle input?
     val part1 = challenge("Day 8 - Part One") {
-        inputFile("2017/8.txt")
-
-        solveMultiLine {
-            val instructions = it.map(::parseInstruction)
+        solve {
+            val instructions = inputFile("2017/8.txt").lines().map(::parseInstruction)
             val r = Register()
             instructions.forEach { r.execute(it) }
             result = r.largestRegister()
@@ -110,10 +108,8 @@ object Day08_Registers {
     //
     //To be safe, the CPU also needs to know the highest value held in any register during this process so that it can decide how much memory to allocate to these operations. For example, in the above instructions, the highest value ever held was 10 (in register c after the third instruction was evaluated).
     val part2 = challenge("Day 8 - Part Two") {
-        inputFile("2017/8.txt")
-
-        solveMultiLine {
-            val instructions = it.map(::parseInstruction)
+        solve {
+            val instructions = inputFile("2017/8.txt").lines().map(::parseInstruction)
             val r = Register()
             var largestValue = 0
             instructions.forEach {

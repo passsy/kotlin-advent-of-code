@@ -15,9 +15,8 @@ fun main(args: Array<String>) {
 object Day23_CoprocessorConflagration {
 
     val part1 = challenge("Day 23 - Part 1") {
-        inputFile("2017/23.txt")
-        solveMultiLine {
-            val instructions = it.map { parseInstruction(it) }
+        solve {
+            val instructions = inputFile("2017/23.txt").lines().map { parseInstruction(it) }
             result = Coprocessor(instructions).apply { run() }.mulCount
         }
     }
@@ -42,7 +41,7 @@ object Day23_CoprocessorConflagration {
 
 
     val part2 = challenge("Day 23 - Part 2") {
-        solveMultiLine {
+        solve {
             result = solvePart2(false)
         }
     }

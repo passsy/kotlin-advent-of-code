@@ -17,9 +17,8 @@ fun main(args: Array<String>) {
 object Day18_Duet {
 
     val part1 = challenge("Day 18 - Part One") {
-        inputFile("2017/18.txt")
-        solveMultiLine {
-            val instructions = it.map { parseInstruction(it) }
+        solve {
+            val instructions = inputFile("2017/18.txt").lines().map { parseInstruction(it) }
             result = SoloPlayer(instructions).apply { run() }.sounds.peek()!!
         }
     }
@@ -145,9 +144,8 @@ object Day18_Duet {
 
 
     val part2 = challenge("Day 18 - Part Two") {
-        inputFile("2017/18.txt")
-        solveMultiLine {
-            val instructions = it.map { parseInstruction(it) }
+        solve {
+            val instructions = inputFile("2017/18.txt").lines().map { parseInstruction(it) }
             result = duet(instructions)
         }
     }

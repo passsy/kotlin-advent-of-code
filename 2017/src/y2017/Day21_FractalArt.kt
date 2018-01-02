@@ -15,9 +15,9 @@ typealias Art = List<List<Char>>
 object Day21_FractalArt {
 
     val part1 = challenge("Day 21 - Part 1") {
-        inputFile("2017/21.txt")
-        solveMultiLine {
-            val patterns = it.map { parseRule(it) }
+
+        solve {
+            val patterns = inputFile("2017/21.txt").lines().map { parseRule(it) }
 
             var art: Art = listOf(
                     listOf('.', '#', '.'),
@@ -139,9 +139,8 @@ object Day21_FractalArt {
 
 
     val part2 = challenge("Day 21 - Part 2") {
-        inputFile("2017/21.txt")
-        solveMultiLine {
-            val patterns = it.map { parseRule(it) }
+        solve {
+            val patterns = inputFile("2017/21.txt").lines().map { parseRule(it) }
 
             var art: Art = listOf(
                     listOf('.', '#', '.'),

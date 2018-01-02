@@ -14,9 +14,8 @@ fun main(args: Array<String>) {
 object Day14_DiskDefragmentation {
 
     val part1 = challenge("Day 14 - Part One") {
-        inputText("amgozmfv")
         solve {
-            result = buildGrid(it).usedSquares()
+            result = buildGrid("amgozmfv").usedSquares()
         }
     }
 
@@ -50,9 +49,8 @@ object Day14_DiskDefragmentation {
     //
     //How many regions are present given your key string?
     val part2 = challenge("Day 14 - Part Two") {
-        inputText("amgozmfv")
         solve {
-            result = buildGrid(it).regionCount()
+            result = buildGrid("amgozmfv").regionCount()
         }
     }
 

@@ -26,9 +26,8 @@ object Day02_CorruptionChecksum {
     //
     //What is the checksum for the spreadsheet in your puzzle input?
     val part1 = challenge("Day 2 - Part One") {
-        inputFile("2017/2.txt")
-        solveMultiLine {
-            val table = parseInputTable(it)
+        solve {
+            val table = parseInputTable(inputFile("2017/2.txt").lines())
             result = checksum(table) //42378
         }
     }
@@ -59,9 +58,8 @@ object Day02_CorruptionChecksum {
     //
     //What is the sum of each row's result in your puzzle input?
     val part2 = challenge("Day 2 - Part Two") {
-        inputFile("2017/2.txt")
-        solveMultiLine {
-            val table = parseInputTable(it)
+        solve {
+            val table = parseInputTable(inputFile("2017/2.txt").lines())
             result = evenlyDivisibleChecksum(table) //246
         }
     }

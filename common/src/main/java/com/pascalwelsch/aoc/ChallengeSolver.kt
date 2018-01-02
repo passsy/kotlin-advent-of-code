@@ -15,7 +15,7 @@ annotation class CodingChallenge
 class ChallengeSolver(var name: String = "Challenge") {
 
     operator fun invoke(): String {
-        return _solve(requireNotNull(solver))
+        return _solve()
     }
 
     /**
@@ -23,29 +23,11 @@ class ChallengeSolver(var name: String = "Challenge") {
      */
     fun test(): String {
         outFile = null
-        return _solve(requireNotNull(solver))
+        return _solve()
     }
 
-    private var input: (() -> String)? = {"No input provided"}
     private var outFile: (() -> File)? = null
-    private var solver: Solver<*>? = null
-
-    fun ChallengeSolver.inputText(text: String, trim: Boolean = true) {
-        input = {
-            val trimmed = if (trim) {
-                text.trimChallengeInput()
-            } else {
-                text
-            }
-            if (trimmed.isEmpty()) throw IllegalArgumentException("Input is empty")
-            println("input has ${text.lines().size} lines")
-            trimmed
-        }
-    }
-
-    fun ChallengeSolver.inputFile(path: String, trim: Boolean = true) {
-        input = { resourceFileText(path, trim)}
-    }
+    private var solver: (Solving.() -> Unit)? = null
 
     fun ChallengeSolver.outputFile(path: String) {
         outFile = {
@@ -55,25 +37,20 @@ class ChallengeSolver(var name: String = "Challenge") {
         }
     }
 
-    fun solveMultiLine(block: Result.(List<String>) -> Unit) {
-        solver = Solver({ requireNotNull(input)().lines() }, block)
+    fun solve(block: Solving.() -> Unit) {
+        solver = block
     }
 
-    fun solve(block: Result.(String) -> Unit) {
-        solver = Solver({ requireNotNull(input)() }, block)
-    }
-
-    private fun <T> _solve(solver: Solver<T>): String {
+    private fun _solve(): String {
         val title = "\nChallenge '$name'"
         val line = "".padStart(title.count(), '=')
         println("$title\n$line")
 
-        val context = Result()
-        val input = solver.inputProvider()
+        val context = Solving()
 
         println("\nsolving...")
         val duration = measureTimeMillis {
-            solver.solve(context, input)
+            solver!!.invoke(context)
         }
 
         // print output partially because the can get very long
@@ -101,24 +78,19 @@ class ChallengeSolver(var name: String = "Challenge") {
 
 }
 
-class Solver<T>(
-        val inputProvider: () -> T,
-        val block: Result.(T) -> Unit
-) {
-    fun solve(context: Result, input: T) = block(context, input)
-}
-
-
 /**
  * Has help methods while solving a challenge
  */
-class Result {
+class Solving {
 
     /**
      * use `result = "solution"` to append text to the final solution
      */
     var result: Any = ""
 
+    fun inputFile(path: String, trim: Boolean = true): String {
+        return resourceFileText(path, trim)
+    }
 }
 
 private const val MAX_RESULT_PRINT_LINES = 10

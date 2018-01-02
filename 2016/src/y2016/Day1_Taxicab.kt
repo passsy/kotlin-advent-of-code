@@ -30,10 +30,9 @@ object Day1_Taxicab {
     //R5, L5, R5, R3 leaves you 12 blocks away.
     //How many blocks away is Easter Bunny HQ?
     val part1 = challenge("Day 1 - Part One") {
-        inputFile("2016/1.txt")
         solve {
             val position = followInstructions(
-                    parseInstructions(it))
+                    parseInstructions(inputFile("2016/1.txt")))
             result = position.distance()
         }
     }
@@ -108,10 +107,9 @@ object Day1_Taxicab {
     //
     //How many blocks away is the first location you visit twice?
     val part2 = challenge("Day 1 - Part Two") {
-        inputFile("2016/1.txt")
         solve {
             val position = findFirstCrossing(
-                    parseInstructions(it))
+                    parseInstructions(inputFile("2016/1.txt")))
             result = position.distance()
         }
     }

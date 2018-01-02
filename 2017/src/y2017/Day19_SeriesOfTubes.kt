@@ -16,9 +16,8 @@ object Day19_SeriesOfTubes {
 
 
     val part1 = challenge("Day 19 - Part One") {
-        inputFile("2017/19.txt")
-        solveMultiLine {
-            result = followRoutingDiagram(it.map { it.toList() }).letters
+        solve {
+            result = followRoutingDiagram(inputFile("2017/19.txt").lines().map { it.toList() }).letters
         }
     }
 
@@ -127,9 +126,8 @@ object Day19_SeriesOfTubes {
     enum class Orientation { NORTH, EAST, SOUTH, WEST }
 
     val part2 = challenge("Day 19 - Part Two") {
-        inputFile("2017/19.txt")
-        solveMultiLine {
-            result = followRoutingDiagram(it.map { it.toList() }).steps
+        solve {
+            result = followRoutingDiagram(inputFile("2017/19.txt").lines().map { it.toList() }).steps
         }
     }
 }

@@ -22,10 +22,8 @@ object Day04_Passphrases {
     //aa bb cc dd aaa is valid - aa and aaa count as different words.
     //The system's full passphrase list is available as your puzzle input. How many passphrases are valid?
     val part1 = challenge("Day 4 - Part One") {
-        inputFile("2017/4.txt")
-
-        solveMultiLine {
-            result = it.filter { validatePassphrase(it) }.count() //337
+        solve {
+            result = inputFile("2017/4.txt").lines().filter { validatePassphrase(it) }.count() //337
         }
     }
 
@@ -47,10 +45,8 @@ object Day04_Passphrases {
     //oiii ioii iioi iiio is not valid - any of these words can be rearranged to form any other word.
     //Under this new system policy, how many passphrases are valid?
     val part2 = challenge("Day 4 - Part Two") {
-        inputFile("2017/4.txt")
-
-        solveMultiLine {
-            result = it.filter { validatePassphrase2(it) }.count() //231
+        solve {
+            result = inputFile("2017/4.txt").lines().filter { validatePassphrase2(it) }.count() //231
         }
     }
 

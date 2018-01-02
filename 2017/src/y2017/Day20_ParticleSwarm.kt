@@ -43,9 +43,8 @@ object Day20_ParticleSwarm {
     //
     //Which particle will stay closest to position <0,0,0> in the long term?
     val part1 = challenge("Day 20 - Part One") {
-        inputFile("2017/20.txt")
-        solveMultiLine {
-            val particles = it.mapIndexed(::toParticle)
+        solve {
+            val particles = inputFile("2017/20.txt").lines().mapIndexed(::toParticle)
             result = closesParticleLongTerm(particles).id
         }
     }
@@ -102,9 +101,8 @@ object Day20_ParticleSwarm {
     //
     //How many particles are left after all collisions are resolved?
     val part2 = challenge("Day 20 - Part Two") {
-        inputFile("2017/20.txt")
-        solveMultiLine {
-            val particles = it.mapIndexed(::toParticle)
+        solve {
+            val particles = inputFile("2017/20.txt").lines().mapIndexed(::toParticle)
             result = leftoversAfterCollisions(particles).count()
         }
     }

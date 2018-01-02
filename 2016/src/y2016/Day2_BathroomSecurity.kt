@@ -38,10 +38,9 @@ object Day2_BathroomSecurity {
     //
     //Your puzzle input is the instructions from the document you found at the front desk. What is the bathroom code?
     val part1 = challenge("Day 2 - Part One") {
-        inputFile("2016/2.txt")
 
-        solveMultiLine {
-            result = buttons(it.map { it.toList() }, pad9).joinToString("")
+        solve {
+            result = buttons(inputFile("2016/2.txt").lines().map { it.toList() }, pad9).joinToString("")
         }
     }
 
@@ -105,10 +104,8 @@ object Day2_BathroomSecurity {
     //
     //Using the same instructions in your puzzle input, what is the correct bathroom code?
     val part2 = challenge("Day 2 - Part Two") {
-        inputFile("2016/2.txt")
-
-        solveMultiLine {
-            result = buttons(it.map { it.toList() }, pad13).joinToString("")
+        solve {
+            result = buttons(inputFile("2016/2.txt").lines().map { it.toList() }, pad13).joinToString("")
         }
     }
 

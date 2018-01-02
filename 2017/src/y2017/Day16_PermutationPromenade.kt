@@ -10,9 +10,9 @@ fun main(args: Array<String>) {
 
 object Day16_PermutationPromenade {
     val part1 = challenge("Day 16 - Part One") {
-        inputFile("2017/16.txt")
+
         solve {
-            val commands = it.split(",").map { parseCommand(it) }
+            val commands = inputFile("2017/16.txt").split(",").map { parseCommand(it) }
             result = dance(commands).joinToString("")
         }
     }
@@ -86,9 +86,8 @@ object Day16_PermutationPromenade {
     private val initialProgramOrder = listOf("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p")
 
     val part2 = challenge("Day 16 - Part Two") {
-        inputFile("2017/16.txt")
         solve {
-            val commands = it.split(",").map { parseCommand(it) }
+            val commands = inputFile("2017/16.txt").split(",").map { parseCommand(it) }
             result = dance(commands, 1_000_000).joinToString("")
         }
     }

@@ -37,9 +37,8 @@ object Day11_HexEd {
     //ne,ne,s,s is 2 steps away (se,se).
     //se,sw,se,sw,sw is 3 steps away (s,s,sw).
     val part1 = challenge("Day 11 - Part One") {
-        inputFile("2017/11.txt")
         solve {
-            val directions = it.split(',').map { HexDirection.from(it) }
+            val directions = inputFile("2017/11.txt").split(',').map { HexDirection.from(it) }
             val origin = HexPosition(0, 0)
             val position = followDirections(directions, origin)
             result = position.distance(origin)
@@ -87,9 +86,8 @@ object Day11_HexEd {
     //
     //How many steps away is the furthest he ever got from his starting position?
     val part2 = challenge("Day 11 - Part One") {
-        inputFile("2017/11.txt")
         solve {
-            val directions = it.split(',').map { HexDirection.from(it) }
+            val directions = inputFile("2017/11.txt").split(',').map { HexDirection.from(it) }
             val origin = HexPosition(0, 0)
             result = furthestDistance(directions, origin)
         }

@@ -170,9 +170,8 @@ object Day13_PacketScanners {
     //
     //Given the details of the firewall you've recorded, if you leave immediately, what is the severity of your whole trip?
     val part1 = challenge("Day 14 - Part One") {
-        inputFile("2017/13.txt")
-        solveMultiLine {
-            val layers = it.map { parseLayer(it) }
+        solve {
+            val layers = inputFile("2017/13.txt").lines().map { parseLayer(it) }
             result = severity(layers)
         }
     }
@@ -315,9 +314,9 @@ object Day13_PacketScanners {
     //
     //What is the fewest number of picoseconds that you need to delay the packet to pass through the firewall without being caught?
     val part2 = challenge("Day 14 - Part Two") {
-        inputFile("2017/13.txt")
-        solveMultiLine {
-            val layers = it.map { parseLayer(it) }
+
+        solve {
+            val layers = inputFile("2017/13.txt").lines().map { parseLayer(it) }
             result = fastestPass(layers)
         }
     }

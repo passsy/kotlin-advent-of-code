@@ -1,6 +1,7 @@
 package y2017
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.Ignore
 import org.junit.Test
 import y2017.Day19_SeriesOfTubes.followRoutingDiagram
 
@@ -21,6 +22,7 @@ class Day19_SeriesOfTubesTest {
         assertThat(followRoutingDiagram(graph).letters).isEqualTo("ABCDEF")
     }
 
+    @Ignore("too large (115ms)")
     @Test
     fun `solve part 1`() {
         assertThat(Day19_SeriesOfTubes.part1.test()).isEqualTo("MKXOIHZNBL")

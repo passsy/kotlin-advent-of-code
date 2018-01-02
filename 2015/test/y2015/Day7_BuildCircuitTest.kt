@@ -3,6 +3,7 @@ package y2015
 import com.pascalwelsch.aoc.resourceFileText
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.junit.Ignore
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -32,6 +33,7 @@ class Day7_BuildCircuitTest {
         assertThat(result).isEqualTo(3176)
     }
 
+    @Ignore("too large (115ms)")
     @Test
     fun `big`() {
         val input = resourceFileText("2015/day7-2").lines()

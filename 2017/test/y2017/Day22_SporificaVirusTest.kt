@@ -1,6 +1,7 @@
 package y2017
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.Ignore
 import org.junit.Test
 import y2017.Day22_SporificaVirus.moveAdvanced
 import y2017.Day22_SporificaVirus.moveSimple
@@ -45,6 +46,7 @@ class Day22_SporificaVirusTest {
         assertThat(infections).isEqualTo(26)
     }
 
+    @Ignore("too large (115ms)")
     @Test
     fun `solve part 2`() {
         assertThat(part2.test()).isEqualTo("2512059")

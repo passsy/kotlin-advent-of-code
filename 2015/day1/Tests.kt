@@ -1,12 +1,12 @@
 package y2015
 
-import com.pascalwelsch.aoc.resourceFileText
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.Ignore
 import org.junit.Test
+import java.io.File
 
-class Day1_NotQuiteLispTest {
+class Tests {
 
     @Test
     fun `Santas final position - (()) and ()() both result in floor 0`() {
@@ -41,7 +41,7 @@ class Day1_NotQuiteLispTest {
     @Ignore("slow test")
     @Test
     fun `solve part1`() {
-        val input = resourceFileText("2015/day1-1")
+        val input = File("input").readText()
         assertThat(whatFloor(input)).isEqualTo(138)
     }
 
@@ -63,7 +63,7 @@ class Day1_NotQuiteLispTest {
 
     @Test
     fun `solve part2`() {
-        val input = resourceFileText("2015/day1-2")
+        val input = File("input").readText()
         assertThat(whenEnterBasement(input)).isEqualTo(1771)
     }
 
